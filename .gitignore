@@ -15,9 +15,12 @@ target/
 
 ### IntelliJ IDEA ###
 .idea
+.idea/*
+.idea/**
 *.iws
 *.iml
 *.ipr
+diplom-project-management-program-c51.iml
 
 ### NetBeans ###
 /nbproject/private/
