@@ -8,19 +8,19 @@ Web application that allows manage projects in various business.
 
 ## Dependencies
 
-*Spring Web
-*Java Servlet API
-*Spring Security
-*Spring ORM
-*Hibernate Core
-*MySQL Connector / H2
-*Tomcat DBCP
-*Hibernate Validator Engine
-*Thymeleaf
-*slf4j + log4j
-*JUnit 5
-*String Test
-*Lombok
+* Spring Web
+* Java Servlet API
+* Spring Security
+* Spring ORM
+* Hibernate Core
+* MySQL Connector / H2
+* Tomcat DBCP
+* Hibernate Validator Engine
+* Thymeleaf
+* slf4j + log4j
+* JUnit 5
+* String Test
+* Lombok
 
 ## Features
 
@@ -30,10 +30,10 @@ Web application that allows manage projects in various business.
 
 ## Requirements
 
-*JDK 11
-*Maven
-*MySQL 5+
-*Apache Tomcat 9
+* JDK 11
+* Maven
+* MySQL 5+
+* Apache Tomcat 9
 
 ## Specific steps
 Clone the repository.
