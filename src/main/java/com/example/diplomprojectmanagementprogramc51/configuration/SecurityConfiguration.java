@@ -28,17 +28,33 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
 	@Override
 	protected void configure(HttpSecurity http) throws Exception {
 		http
+//				.authorizeRequests()
+//				.antMatchers("/", "/user/reg", "/db/**").permitAll()
+//				//.antMatchers(permitAllPatterns).permitAll()
+//				.anyRequest().authenticated()
+//				.and()
+//				.formLogin()
+//				.loginPage("/user/login")
+//				.permitAll()
+//				.and()
+//				.logout()
+//				.permitAll();
+
+				.csrf().disable()
 				.authorizeRequests()
-				//.antMatchers("/", "/user/reg").permitAll()
 				.antMatchers(permitAllPatterns).permitAll()
 				.anyRequest().authenticated()
 				.and()
 				.formLogin()
 				.loginPage("/user/login")
-				.permitAll()
+				.usernameParameter("username").passwordParameter("password")
+				.failureUrl("/user/login?failed=true")
 				.and()
 				.logout()
-				.permitAll();
+				.logoutUrl("/user/logout")
+				.logoutSuccessUrl("/user/login")
+				.invalidateHttpSession(true);
+
 	}
 
 	@Bean
@@ -52,6 +68,6 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
 				.withUser("test")
 				.password(passwordEncoder().encode("test"))
 				.roles("USER");
-//		auth.userDetailsService(userService).passwordEncoder(passwordEncoder());
+		//auth.userDetailsService(userService).passwordEncoder(passwordEncoder());
 	}
 }

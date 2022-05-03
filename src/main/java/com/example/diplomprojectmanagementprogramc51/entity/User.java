@@ -20,7 +20,6 @@ import java.util.stream.Collectors;
 @EqualsAndHashCode(callSuper = false, exclude = {"roles","projects"})
 public class User extends BasicEntity implements UserDetails {
 
-	@EqualsAndHashCode.Include
 	@Column(unique = true, length = 250, nullable = false)
 	private String username;
 	@Column(nullable = false)

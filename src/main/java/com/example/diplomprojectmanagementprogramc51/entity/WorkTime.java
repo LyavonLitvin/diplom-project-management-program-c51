@@ -1,10 +1,6 @@
 package com.example.diplomprojectmanagementprogramc51.entity;
 
-import com.example.diplomprojectmanagementprogramc51.hibernatelistener.GeneralCreateUpdateListener;
-import lombok.AllArgsConstructor;
-import lombok.Data;
-import lombok.EqualsAndHashCode;
-import lombok.NoArgsConstructor;
+import lombok.*;
 import lombok.experimental.SuperBuilder;
 
 import javax.persistence.*;
@@ -12,11 +8,10 @@ import java.time.LocalDate;
 import java.time.LocalTime;
 
 @Entity
-@EntityListeners(GeneralCreateUpdateListener.class)
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
-@SuperBuilder
+@Builder
 @Table(name = "work_times")
 @EqualsAndHashCode(onlyExplicitlyIncluded = true)
 public class WorkTime extends BasicEntity{

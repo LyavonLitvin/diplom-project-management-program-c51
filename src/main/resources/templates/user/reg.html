@@ -2,11 +2,11 @@
 <html lang="en" xmlns:th="http://thymeleaf.org">
 <head>
     <meta charset="UTF-8">
-    <title>Sign up</title>
+    <title>Register Page</title>
 </head>
 <body>
 
-    <form action="#" th:action="@{/user/signup}" method="post" th:object="${user}">
+    <form action="#" th:action="@{/user/reg}" method="post" th:object="${user}">
 
         <p th:if="${error} != null" th:text="${error}">Error</p>
 

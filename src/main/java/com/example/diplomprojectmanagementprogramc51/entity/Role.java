@@ -1,11 +1,11 @@
 package com.example.diplomprojectmanagementprogramc51.entity;
 
-import com.example.diplomprojectmanagementprogramc51.hibernatelistener.GeneralCreateUpdateListener;
+
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 import lombok.NoArgsConstructor;
-import lombok.experimental.SuperBuilder;
+
 import org.springframework.security.core.GrantedAuthority;
 
 import javax.persistence.*;
