@@ -22,9 +22,10 @@ import java.util.Set;
 @EqualsAndHashCode(onlyExplicitlyIncluded = true)
 public class Category extends BasicEntity{
 
+    @EqualsAndHashCode.Include
     @Column(unique = true, length = 40, nullable = false)
     private String name;
-    @OneToMany
-    private Set<Task> tasks = new HashSet<>();
+//    @OneToMany
+//    private Set<Task> tasks = new HashSet<>();
 
 }

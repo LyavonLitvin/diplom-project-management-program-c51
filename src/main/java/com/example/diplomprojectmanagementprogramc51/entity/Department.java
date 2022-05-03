@@ -20,9 +20,11 @@ import java.util.Set;
 @Table(name = "departments")
 @EqualsAndHashCode(onlyExplicitlyIncluded = true)
 public class Department extends BasicEntity{
+
+    @EqualsAndHashCode.Include
     @Column(unique = true, length = 40, nullable = false)
     private String name;
-    @OneToMany
-    private Set<User> employees = new HashSet<>();
+//    @OneToMany
+//    private Set<User> employees = new HashSet<>();
 
 }

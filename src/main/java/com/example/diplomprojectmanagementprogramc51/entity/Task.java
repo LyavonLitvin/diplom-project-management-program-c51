@@ -34,6 +34,9 @@ public class Task extends BasicEntity{
     @ManyToOne(targetEntity = Category.class)
     @JoinColumn(name = "category_id", nullable = false)
     private Category category;
+    @ManyToOne(targetEntity = Department.class)
+    @JoinColumn(name = "department_id", nullable = false)
+    private Department department;
     @ManyToOne(targetEntity = Status.class)
     @JoinColumn(name = "status_id", nullable = false)
     private Status status;
