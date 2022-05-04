@@ -2,12 +2,8 @@ package com.example.diplomprojectmanagementprogramc51.entity;
 
 //import com.example.diplomprojectmanagementprogramc51.hibernatelistener.GeneralCreateUpdateListener;
 import lombok.*;
-import lombok.experimental.SuperBuilder;
-import org.springframework.security.core.GrantedAuthority;
 
 import javax.persistence.*;
-import java.util.HashSet;
-import java.util.Set;
 
 @Entity
 

@@ -2,7 +2,6 @@ package com.example.diplomprojectmanagementprogramc51.entity;
 
 //import com.example.diplomprojectmanagementprogramc51.hibernatelistener.GeneralCreateUpdateListener;
 import lombok.*;
-import lombok.experimental.SuperBuilder;
 
 import javax.persistence.*;
 import java.time.LocalDate;

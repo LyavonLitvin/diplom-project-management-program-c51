@@ -3,6 +3,7 @@ package com.example.diplomprojectmanagementprogramc51.service;
 
 import com.example.diplomprojectmanagementprogramc51.entity.Category;
 import com.example.diplomprojectmanagementprogramc51.repository.CategoryRepository;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -11,14 +12,16 @@ import java.util.Optional;
 
 
 @Service
+@Slf4j
 @Transactional
 
-public class CategoryService {
+public class CategoryService{
     private final CategoryRepository categoryRepository;
 
     public CategoryService(CategoryRepository categoryRepository) {
         this.categoryRepository = categoryRepository;
     }
+
 
     public boolean save(Category category){
         if(existsByName(category)){
@@ -60,6 +63,4 @@ public class CategoryService {
     public Optional<Category> findByName(String name){
         return categoryRepository.findByName(name);
     }
-
-
 }
