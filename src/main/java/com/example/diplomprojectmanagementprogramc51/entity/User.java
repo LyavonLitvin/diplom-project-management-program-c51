@@ -22,7 +22,7 @@ public class User extends BasicEntity implements UserDetails {
 
 	@Column(unique = true, length = 250, nullable = false)
 	private String username;
-	@Column(nullable = false)
+	@Column(nullable = false, length = 250)
 	private String password;
 	@Column(unique = true, length = 250, nullable = false)
 	private String email;

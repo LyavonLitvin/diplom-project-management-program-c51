@@ -8,4 +8,5 @@ import java.util.Optional;
 
 public interface PriorityRepository extends JpaRepository<Priority, Long> {
     Optional<Priority> findByName(String name);
+    boolean existsByName(String name);
 }

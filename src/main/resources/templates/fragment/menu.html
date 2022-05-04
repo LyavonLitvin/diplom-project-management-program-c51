@@ -16,22 +16,22 @@
                 </div>
             </div>
 
-<!--            <div sec:authorize="isAuthenticated()">-->
+            <div sec:authorize="isAuthenticated()">
 
-<!--                <div style="float: left; width: 120px; ">-->
-<!--                    <a class="navbar-brand" href="/calc">Calculator</a>-->
-<!--                </div>-->
-<!--                <div style="float: left; width: 100px;">-->
-<!--                    <a class="navbar-brand" href="/calc/history">History</a>-->
-<!--                </div>-->
-<!--                <div style="float: left; width: 100px; ">-->
-<!--                    <form class="navbar-brand" th:action="@{/logout}" method="post">-->
-<!--                        <button>Logout</button>-->
-<!--                    </form>-->
-<!--                </div>-->
+                <div style="float: left; width: 120px; ">
+                    <a class="navbar-brand" href="/calc">Calculator</a>
+                </div>
+                <div style="float: left; width: 100px;">
+                    <a class="navbar-brand" href="/calc/history">History</a>
+                </div>
+                <div style="float: left; width: 100px; ">
+                    <form class="navbar-brand" th:action="@{/logout}" method="post">
+                        <button>Logout</button>
+                    </form>
+                </div>
 
-<!--                &lt;!&ndash;                <a class="navbar-brand" th:href="@{'/user/' + ${session.user.getId()}}">Profile</a>&ndash;&gt;-->
-<!--            </div>-->
+                <!--                <a class="navbar-brand" th:href="@{'/user/' + ${session.user.getId()}}">Profile</a>-->
+            </div>
 
         </div>
 

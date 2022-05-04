@@ -3,13 +3,13 @@
 <head>
     <meta charset="UTF-8">
     <title>User page</title>
-    <div th:insert="fragment/bootstrap :: cdncss"></div>
+
 </head>
 <body>
-<div th:insert="fragment/menu :: top"></div>
+
 
 User ID:  <td th:text="${user.getId()}">User ID</td> <br/>
-User name: <td th:text="${user.getName()}">User Name</td> <br/>
+User name: <td th:text="${user.getUsername()}">User Username</td> <br/>
 User password:  <td th:text="${user.getPassword()}">User Password</td> <br/>
 User e-mail: <td th:text="${user.getEmail()}">User E-mail</td>
 

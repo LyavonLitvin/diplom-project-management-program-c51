@@ -3,11 +3,11 @@
 <head>
     <meta charset="UTF-8">
     <title>User edit page</title>
-    <div th:insert="fragment/bootstrap :: cdncss"></div>
+
 </head>
 <body>
 
-<div th:insert="fragment/menu :: top"></div>
+
 
 <form th:method="PATCH" action="@{/user/{id}{id=${user.getId()}}}" th:object="${user}">
     <div>

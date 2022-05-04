@@ -24,15 +24,6 @@ import java.util.Optional;
 @Transactional
 public class UserService implements UserDetailsService {
 
-//
-//	@Autowired
-//	private UserRepository userRepository;
-//
-//	@Autowired
-//	private
-//
-//	@Autowired
-//	private BCryptPasswordEncoder passwordEncoder;
 
     private final UserRepository userRepository;
     private final RoleRepository roleRepository;
@@ -42,14 +33,6 @@ public class UserService implements UserDetailsService {
         this.userRepository = userRepository;
         this.roleRepository = roleRepository;
     }
-
-//    public void save(User user) {
-//        user.setPassword(passwordEncoder.encode(user.getPassword()));
-//        HashSet<Role> roles = new HashSet<>();
-//        //roles.add(Role.USER);
-//        user.setRoles(roles);
-//        userRepository.save(user);
-//    }
 
     public boolean registration(RegisteringUserDTO registeringUserDTO) {
         User user = UserMapper.mapFromRegisteringUser(registeringUserDTO);
@@ -85,9 +68,9 @@ public class UserService implements UserDetailsService {
 
 //    public boolean deleteUser(User user) {
 //        User deleted = userRepository.delete(user);
-//if
+//        if
 //        log.info("IN deleteUser - user: {} successfully deleted", deleted);
-//    return true;
+//        return true;
 //    }
 
     @Override
