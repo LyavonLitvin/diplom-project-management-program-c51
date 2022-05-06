@@ -92,6 +92,11 @@
             <version>1.4.2.Final</version>
         </dependency>
 
+        <dependency>
+            <groupId>org.apache.tomcat</groupId>
+            <artifactId>tomcat-dbcp</artifactId>
+            <version>9.0.1</version>
+        </dependency>
     </dependencies>
 
     <build>

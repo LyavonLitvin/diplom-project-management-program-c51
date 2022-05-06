@@ -17,21 +17,21 @@ import java.util.List;
 @SpringBootApplication
 public class DiplomProjectManagementProgramC51Application {
 
-    @Autowired
-    static
-    CategoryRepository categoryRepository;
-
-    @Autowired
-    static
-    DepartmentRepository departmentRepository;
-
-    @Autowired
-    static
-    PriorityRepository priorityRepository;
-
-    @Autowired
-    static
-    StatusRepository statusRepository;
+//    @Autowired
+//    static
+//    CategoryRepository categoryRepository;
+//
+//    @Autowired
+//    static
+//    DepartmentRepository departmentRepository;
+//
+//    @Autowired
+//    static
+//    PriorityRepository priorityRepository;
+//
+//    @Autowired
+//    static
+//    StatusRepository statusRepository;
 
     public static void main(String[] args) {
         SpringApplication.run(DiplomProjectManagementProgramC51Application.class, args);

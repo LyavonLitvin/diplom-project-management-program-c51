@@ -3514,3 +3514,390 @@ Caused by: org.springframework.data.mapping.PropertyReferenceException: No prope
 	at org.springframework.data.repository.query.parser.PartTree.<init>(PartTree.java:92)
 	at org.springframework.data.jpa.repository.query.PartTreeJpaQuery.<init>(PartTreeJpaQuery.java:89)
 	... 61 common frames omitted
+2022-05-06 18:33:43,615 INFO com.example.diplomprojectmanagementprogramc51.DiplomProjectManagementProgramC51Application [restartedMain] Starting DiplomProjectManagementProgramC51Application using Java 11.0.12 on DESKTOP-RJU4KTA with PID 17740 (D:\JavaStuding\diplom-project-management-program-c51\target\classes started by User in D:\JavaStuding\diplom-project-management-program-c51)
+2022-05-06 18:33:43,618 INFO com.example.diplomprojectmanagementprogramc51.DiplomProjectManagementProgramC51Application [restartedMain] No active profile set, falling back to 1 default profile: "default"
+2022-05-06 18:33:43,750 INFO org.springframework.boot.devtools.env.DevToolsPropertyDefaultsPostProcessor [restartedMain] Devtools property defaults active! Set 'spring.devtools.add-properties' to 'false' to disable
+2022-05-06 18:33:43,751 INFO org.springframework.boot.devtools.env.DevToolsPropertyDefaultsPostProcessor [restartedMain] For additional web related logging consider setting the 'logging.level.web' property to 'DEBUG'
+2022-05-06 18:33:46,412 INFO org.springframework.data.repository.config.RepositoryConfigurationDelegate [restartedMain] Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2022-05-06 18:33:46,572 INFO org.springframework.data.repository.config.RepositoryConfigurationDelegate [restartedMain] Finished Spring Data repository scanning in 146 ms. Found 10 JPA repository interfaces.
+2022-05-06 18:33:48,149 INFO org.springframework.boot.web.embedded.tomcat.TomcatWebServer [restartedMain] Tomcat initialized with port(s): 8080 (http)
+2022-05-06 18:33:48,169 INFO org.apache.catalina.core.StandardService [restartedMain] Starting service [Tomcat]
+2022-05-06 18:33:48,170 INFO org.apache.catalina.core.StandardEngine [restartedMain] Starting Servlet engine: [Apache Tomcat/9.0.62]
+2022-05-06 18:33:48,351 INFO org.apache.catalina.core.ContainerBase.[Tomcat].[localhost].[/] [restartedMain] Initializing Spring embedded WebApplicationContext
+2022-05-06 18:33:48,352 INFO org.springframework.boot.web.servlet.context.ServletWebServerApplicationContext [restartedMain] Root WebApplicationContext: initialization completed in 4599 ms
+2022-05-06 18:33:48,404 INFO com.zaxxer.hikari.HikariDataSource [restartedMain] HikariPool-1 - Starting...
+2022-05-06 18:33:48,691 INFO com.zaxxer.hikari.HikariDataSource [restartedMain] HikariPool-1 - Start completed.
+2022-05-06 18:33:48,705 INFO org.springframework.boot.autoconfigure.h2.H2ConsoleAutoConfiguration [restartedMain] H2 console available at '/h2-console'. Database available at 'jdbc:h2:mem:7e15812b-c1f7-4d32-9dd5-13389f47cfc3'
+2022-05-06 18:33:48,868 WARN org.springframework.boot.web.servlet.context.AnnotationConfigServletWebServerApplicationContext [restartedMain] Exception encountered during context initialization - cancelling refresh attempt: org.springframework.beans.factory.BeanCreationException: Error creating bean with name 'dataSourceScriptDatabaseInitializer' defined in class path resource [org/springframework/boot/autoconfigure/sql/init/DataSourceInitializationConfiguration.class]: Invocation of init method failed; nested exception is org.springframework.jdbc.datasource.init.ScriptStatementFailedException: Failed to execute SQL script statement #1 of URL [file:/D:/JavaStuding/diplom-project-management-program-c51/target/classes/data.sql]: # ROLES INSERT INTO roles(creationDateTime, updateDateTime, name) VALUE (NOW(),NOW(),'ADMIN'); nested exception is org.h2.jdbc.JdbcSQLSyntaxErrorException: Синтаксическая ошибка в выражении SQL "[*]# ROLES INSERT INTO ROLES(CREATIONDATETIME, UPDATEDATETIME, NAME) VALUE (NOW(),NOW(),'ADMIN')"
+Syntax error in SQL statement "[*]# ROLES INSERT INTO ROLES(CREATIONDATETIME, UPDATEDATETIME, NAME) VALUE (NOW(),NOW(),'ADMIN')"; SQL statement:
+# ROLES INSERT INTO roles(creationDateTime, updateDateTime, name) VALUE (NOW(),NOW(),'ADMIN') [42000-200]
+2022-05-06 18:33:48,868 INFO com.zaxxer.hikari.HikariDataSource [restartedMain] HikariPool-1 - Shutdown initiated...
+2022-05-06 18:33:48,875 INFO com.zaxxer.hikari.HikariDataSource [restartedMain] HikariPool-1 - Shutdown completed.
+2022-05-06 18:33:48,878 INFO org.apache.catalina.core.StandardService [restartedMain] Stopping service [Tomcat]
+2022-05-06 18:33:48,897 INFO org.springframework.boot.autoconfigure.logging.ConditionEvaluationReportLoggingListener [restartedMain] 
+
+Error starting ApplicationContext. To display the conditions report re-run your application with 'debug' enabled.
+2022-05-06 18:33:48,955 ERROR org.springframework.boot.SpringApplication [restartedMain] Application run failed
+org.springframework.beans.factory.BeanCreationException: Error creating bean with name 'dataSourceScriptDatabaseInitializer' defined in class path resource [org/springframework/boot/autoconfigure/sql/init/DataSourceInitializationConfiguration.class]: Invocation of init method failed; nested exception is org.springframework.jdbc.datasource.init.ScriptStatementFailedException: Failed to execute SQL script statement #1 of URL [file:/D:/JavaStuding/diplom-project-management-program-c51/target/classes/data.sql]: # ROLES INSERT INTO roles(creationDateTime, updateDateTime, name) VALUE (NOW(),NOW(),'ADMIN'); nested exception is org.h2.jdbc.JdbcSQLSyntaxErrorException: Синтаксическая ошибка в выражении SQL "[*]# ROLES INSERT INTO ROLES(CREATIONDATETIME, UPDATEDATETIME, NAME) VALUE (NOW(),NOW(),'ADMIN')"
+Syntax error in SQL statement "[*]# ROLES INSERT INTO ROLES(CREATIONDATETIME, UPDATEDATETIME, NAME) VALUE (NOW(),NOW(),'ADMIN')"; SQL statement:
+# ROLES INSERT INTO roles(creationDateTime, updateDateTime, name) VALUE (NOW(),NOW(),'ADMIN') [42000-200]
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.initializeBean(AbstractAutowireCapableBeanFactory.java:1804)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.doCreateBean(AbstractAutowireCapableBeanFactory.java:620)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBean(AbstractAutowireCapableBeanFactory.java:542)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.lambda$doGetBean$0(AbstractBeanFactory.java:335)
+	at org.springframework.beans.factory.support.DefaultSingletonBeanRegistry.getSingleton(DefaultSingletonBeanRegistry.java:234)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.doGetBean(AbstractBeanFactory.java:333)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.getBean(AbstractBeanFactory.java:208)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.doGetBean(AbstractBeanFactory.java:322)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.getBean(AbstractBeanFactory.java:208)
+	at org.springframework.context.support.AbstractApplicationContext.getBean(AbstractApplicationContext.java:1154)
+	at org.springframework.context.support.AbstractApplicationContext.finishBeanFactoryInitialization(AbstractApplicationContext.java:908)
+	at org.springframework.context.support.AbstractApplicationContext.refresh(AbstractApplicationContext.java:583)
+	at org.springframework.boot.web.servlet.context.ServletWebServerApplicationContext.refresh(ServletWebServerApplicationContext.java:145)
+	at org.springframework.boot.SpringApplication.refresh(SpringApplication.java:740)
+	at org.springframework.boot.SpringApplication.refreshContext(SpringApplication.java:415)
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:303)
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1312)
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1301)
+	at com.example.diplomprojectmanagementprogramc51.DiplomProjectManagementProgramC51Application.main(DiplomProjectManagementProgramC51Application.java:37)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
+	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:566)
+	at org.springframework.boot.devtools.restart.RestartLauncher.run(RestartLauncher.java:49)
+Caused by: org.springframework.jdbc.datasource.init.ScriptStatementFailedException: Failed to execute SQL script statement #1 of URL [file:/D:/JavaStuding/diplom-project-management-program-c51/target/classes/data.sql]: # ROLES INSERT INTO roles(creationDateTime, updateDateTime, name) VALUE (NOW(),NOW(),'ADMIN'); nested exception is org.h2.jdbc.JdbcSQLSyntaxErrorException: Синтаксическая ошибка в выражении SQL "[*]# ROLES INSERT INTO ROLES(CREATIONDATETIME, UPDATEDATETIME, NAME) VALUE (NOW(),NOW(),'ADMIN')"
+Syntax error in SQL statement "[*]# ROLES INSERT INTO ROLES(CREATIONDATETIME, UPDATEDATETIME, NAME) VALUE (NOW(),NOW(),'ADMIN')"; SQL statement:
+# ROLES INSERT INTO roles(creationDateTime, updateDateTime, name) VALUE (NOW(),NOW(),'ADMIN') [42000-200]
+	at org.springframework.jdbc.datasource.init.ScriptUtils.executeSqlScript(ScriptUtils.java:282)
+	at org.springframework.jdbc.datasource.init.ResourceDatabasePopulator.populate(ResourceDatabasePopulator.java:254)
+	at org.springframework.jdbc.datasource.init.DatabasePopulatorUtils.execute(DatabasePopulatorUtils.java:54)
+	at org.springframework.boot.jdbc.init.DataSourceScriptDatabaseInitializer.runScripts(DataSourceScriptDatabaseInitializer.java:90)
+	at org.springframework.boot.sql.init.AbstractScriptDatabaseInitializer.runScripts(AbstractScriptDatabaseInitializer.java:145)
+	at org.springframework.boot.sql.init.AbstractScriptDatabaseInitializer.applyScripts(AbstractScriptDatabaseInitializer.java:107)
+	at org.springframework.boot.sql.init.AbstractScriptDatabaseInitializer.applyDataScripts(AbstractScriptDatabaseInitializer.java:101)
+	at org.springframework.boot.sql.init.AbstractScriptDatabaseInitializer.initializeDatabase(AbstractScriptDatabaseInitializer.java:76)
+	at org.springframework.boot.sql.init.AbstractScriptDatabaseInitializer.afterPropertiesSet(AbstractScriptDatabaseInitializer.java:65)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.invokeInitMethods(AbstractAutowireCapableBeanFactory.java:1863)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.initializeBean(AbstractAutowireCapableBeanFactory.java:1800)
+	... 23 common frames omitted
+Caused by: org.h2.jdbc.JdbcSQLSyntaxErrorException: Синтаксическая ошибка в выражении SQL "[*]# ROLES INSERT INTO ROLES(CREATIONDATETIME, UPDATEDATETIME, NAME) VALUE (NOW(),NOW(),'ADMIN')"
+Syntax error in SQL statement "[*]# ROLES INSERT INTO ROLES(CREATIONDATETIME, UPDATEDATETIME, NAME) VALUE (NOW(),NOW(),'ADMIN')"; SQL statement:
+# ROLES INSERT INTO roles(creationDateTime, updateDateTime, name) VALUE (NOW(),NOW(),'ADMIN') [42000-200]
+	at org.h2.message.DbException.getJdbcSQLException(DbException.java:453)
+	at org.h2.message.DbException.getJdbcSQLException(DbException.java:429)
+	at org.h2.message.DbException.get(DbException.java:205)
+	at org.h2.message.DbException.get(DbException.java:181)
+	at org.h2.message.DbException.getSyntaxError(DbException.java:229)
+	at org.h2.command.Parser.getSyntaxError(Parser.java:1051)
+	at org.h2.command.Parser.getSpecialType1(Parser.java:5620)
+	at org.h2.command.Parser.read(Parser.java:5132)
+	at org.h2.command.Parser.parse(Parser.java:842)
+	at org.h2.command.Parser.parse(Parser.java:819)
+	at org.h2.command.Parser.prepareCommand(Parser.java:738)
+	at org.h2.engine.Session.prepareLocal(Session.java:657)
+	at org.h2.engine.Session.prepareCommand(Session.java:595)
+	at org.h2.jdbc.JdbcConnection.prepareCommand(JdbcConnection.java:1235)
+	at org.h2.jdbc.JdbcStatement.executeInternal(JdbcStatement.java:212)
+	at org.h2.jdbc.JdbcStatement.execute(JdbcStatement.java:201)
+	at com.zaxxer.hikari.pool.ProxyStatement.execute(ProxyStatement.java:94)
+	at com.zaxxer.hikari.pool.HikariProxyStatement.execute(HikariProxyStatement.java)
+	at org.springframework.jdbc.datasource.init.ScriptUtils.executeSqlScript(ScriptUtils.java:261)
+	... 33 common frames omitted
+2022-05-06 18:35:01,990 INFO com.example.diplomprojectmanagementprogramc51.DiplomProjectManagementProgramC51Application [restartedMain] Starting DiplomProjectManagementProgramC51Application using Java 11.0.12 on DESKTOP-RJU4KTA with PID 18628 (D:\JavaStuding\diplom-project-management-program-c51\target\classes started by User in D:\JavaStuding\diplom-project-management-program-c51)
+2022-05-06 18:35:01,995 INFO com.example.diplomprojectmanagementprogramc51.DiplomProjectManagementProgramC51Application [restartedMain] No active profile set, falling back to 1 default profile: "default"
+2022-05-06 18:35:02,103 INFO org.springframework.boot.devtools.env.DevToolsPropertyDefaultsPostProcessor [restartedMain] Devtools property defaults active! Set 'spring.devtools.add-properties' to 'false' to disable
+2022-05-06 18:35:02,103 INFO org.springframework.boot.devtools.env.DevToolsPropertyDefaultsPostProcessor [restartedMain] For additional web related logging consider setting the 'logging.level.web' property to 'DEBUG'
+2022-05-06 18:35:03,227 INFO org.springframework.data.repository.config.RepositoryConfigurationDelegate [restartedMain] Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2022-05-06 18:35:03,335 INFO org.springframework.data.repository.config.RepositoryConfigurationDelegate [restartedMain] Finished Spring Data repository scanning in 98 ms. Found 10 JPA repository interfaces.
+2022-05-06 18:35:04,229 INFO org.springframework.boot.web.embedded.tomcat.TomcatWebServer [restartedMain] Tomcat initialized with port(s): 8080 (http)
+2022-05-06 18:35:04,240 INFO org.apache.catalina.core.StandardService [restartedMain] Starting service [Tomcat]
+2022-05-06 18:35:04,240 INFO org.apache.catalina.core.StandardEngine [restartedMain] Starting Servlet engine: [Apache Tomcat/9.0.62]
+2022-05-06 18:35:04,362 INFO org.apache.catalina.core.ContainerBase.[Tomcat].[localhost].[/] [restartedMain] Initializing Spring embedded WebApplicationContext
+2022-05-06 18:35:04,363 INFO org.springframework.boot.web.servlet.context.ServletWebServerApplicationContext [restartedMain] Root WebApplicationContext: initialization completed in 2258 ms
+2022-05-06 18:35:04,403 INFO com.zaxxer.hikari.HikariDataSource [restartedMain] HikariPool-1 - Starting...
+2022-05-06 18:35:04,543 INFO com.zaxxer.hikari.HikariDataSource [restartedMain] HikariPool-1 - Start completed.
+2022-05-06 18:35:04,557 INFO org.springframework.boot.autoconfigure.h2.H2ConsoleAutoConfiguration [restartedMain] H2 console available at '/pmp_db'. Database available at 'jdbc:h2:mem:pmp_db'
+2022-05-06 18:35:04,666 WARN org.springframework.boot.web.servlet.context.AnnotationConfigServletWebServerApplicationContext [restartedMain] Exception encountered during context initialization - cancelling refresh attempt: org.springframework.beans.factory.BeanCreationException: Error creating bean with name 'dataSourceScriptDatabaseInitializer' defined in class path resource [org/springframework/boot/autoconfigure/sql/init/DataSourceInitializationConfiguration.class]: Invocation of init method failed; nested exception is org.springframework.jdbc.datasource.init.ScriptStatementFailedException: Failed to execute SQL script statement #1 of URL [file:/D:/JavaStuding/diplom-project-management-program-c51/target/classes/data.sql]: # ROLES INSERT INTO roles(creationDateTime, updateDateTime, name) VALUE (NOW(),NOW(),'ADMIN'); nested exception is org.h2.jdbc.JdbcSQLSyntaxErrorException: Синтаксическая ошибка в выражении SQL "[*]# ROLES INSERT INTO ROLES(CREATIONDATETIME, UPDATEDATETIME, NAME) VALUE (NOW(),NOW(),'ADMIN')"
+Syntax error in SQL statement "[*]# ROLES INSERT INTO ROLES(CREATIONDATETIME, UPDATEDATETIME, NAME) VALUE (NOW(),NOW(),'ADMIN')"; SQL statement:
+# ROLES INSERT INTO roles(creationDateTime, updateDateTime, name) VALUE (NOW(),NOW(),'ADMIN') [42000-200]
+2022-05-06 18:35:04,667 INFO com.zaxxer.hikari.HikariDataSource [restartedMain] HikariPool-1 - Shutdown initiated...
+2022-05-06 18:35:04,675 INFO com.zaxxer.hikari.HikariDataSource [restartedMain] HikariPool-1 - Shutdown completed.
+2022-05-06 18:35:04,678 INFO org.apache.catalina.core.StandardService [restartedMain] Stopping service [Tomcat]
+2022-05-06 18:35:04,695 INFO org.springframework.boot.autoconfigure.logging.ConditionEvaluationReportLoggingListener [restartedMain] 
+
+Error starting ApplicationContext. To display the conditions report re-run your application with 'debug' enabled.
+2022-05-06 18:35:04,731 ERROR org.springframework.boot.SpringApplication [restartedMain] Application run failed
+org.springframework.beans.factory.BeanCreationException: Error creating bean with name 'dataSourceScriptDatabaseInitializer' defined in class path resource [org/springframework/boot/autoconfigure/sql/init/DataSourceInitializationConfiguration.class]: Invocation of init method failed; nested exception is org.springframework.jdbc.datasource.init.ScriptStatementFailedException: Failed to execute SQL script statement #1 of URL [file:/D:/JavaStuding/diplom-project-management-program-c51/target/classes/data.sql]: # ROLES INSERT INTO roles(creationDateTime, updateDateTime, name) VALUE (NOW(),NOW(),'ADMIN'); nested exception is org.h2.jdbc.JdbcSQLSyntaxErrorException: Синтаксическая ошибка в выражении SQL "[*]# ROLES INSERT INTO ROLES(CREATIONDATETIME, UPDATEDATETIME, NAME) VALUE (NOW(),NOW(),'ADMIN')"
+Syntax error in SQL statement "[*]# ROLES INSERT INTO ROLES(CREATIONDATETIME, UPDATEDATETIME, NAME) VALUE (NOW(),NOW(),'ADMIN')"; SQL statement:
+# ROLES INSERT INTO roles(creationDateTime, updateDateTime, name) VALUE (NOW(),NOW(),'ADMIN') [42000-200]
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.initializeBean(AbstractAutowireCapableBeanFactory.java:1804)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.doCreateBean(AbstractAutowireCapableBeanFactory.java:620)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBean(AbstractAutowireCapableBeanFactory.java:542)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.lambda$doGetBean$0(AbstractBeanFactory.java:335)
+	at org.springframework.beans.factory.support.DefaultSingletonBeanRegistry.getSingleton(DefaultSingletonBeanRegistry.java:234)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.doGetBean(AbstractBeanFactory.java:333)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.getBean(AbstractBeanFactory.java:208)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.doGetBean(AbstractBeanFactory.java:322)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.getBean(AbstractBeanFactory.java:208)
+	at org.springframework.context.support.AbstractApplicationContext.getBean(AbstractApplicationContext.java:1154)
+	at org.springframework.context.support.AbstractApplicationContext.finishBeanFactoryInitialization(AbstractApplicationContext.java:908)
+	at org.springframework.context.support.AbstractApplicationContext.refresh(AbstractApplicationContext.java:583)
+	at org.springframework.boot.web.servlet.context.ServletWebServerApplicationContext.refresh(ServletWebServerApplicationContext.java:145)
+	at org.springframework.boot.SpringApplication.refresh(SpringApplication.java:740)
+	at org.springframework.boot.SpringApplication.refreshContext(SpringApplication.java:415)
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:303)
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1312)
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1301)
+	at com.example.diplomprojectmanagementprogramc51.DiplomProjectManagementProgramC51Application.main(DiplomProjectManagementProgramC51Application.java:37)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
+	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:566)
+	at org.springframework.boot.devtools.restart.RestartLauncher.run(RestartLauncher.java:49)
+Caused by: org.springframework.jdbc.datasource.init.ScriptStatementFailedException: Failed to execute SQL script statement #1 of URL [file:/D:/JavaStuding/diplom-project-management-program-c51/target/classes/data.sql]: # ROLES INSERT INTO roles(creationDateTime, updateDateTime, name) VALUE (NOW(),NOW(),'ADMIN'); nested exception is org.h2.jdbc.JdbcSQLSyntaxErrorException: Синтаксическая ошибка в выражении SQL "[*]# ROLES INSERT INTO ROLES(CREATIONDATETIME, UPDATEDATETIME, NAME) VALUE (NOW(),NOW(),'ADMIN')"
+Syntax error in SQL statement "[*]# ROLES INSERT INTO ROLES(CREATIONDATETIME, UPDATEDATETIME, NAME) VALUE (NOW(),NOW(),'ADMIN')"; SQL statement:
+# ROLES INSERT INTO roles(creationDateTime, updateDateTime, name) VALUE (NOW(),NOW(),'ADMIN') [42000-200]
+	at org.springframework.jdbc.datasource.init.ScriptUtils.executeSqlScript(ScriptUtils.java:282)
+	at org.springframework.jdbc.datasource.init.ResourceDatabasePopulator.populate(ResourceDatabasePopulator.java:254)
+	at org.springframework.jdbc.datasource.init.DatabasePopulatorUtils.execute(DatabasePopulatorUtils.java:54)
+	at org.springframework.boot.jdbc.init.DataSourceScriptDatabaseInitializer.runScripts(DataSourceScriptDatabaseInitializer.java:90)
+	at org.springframework.boot.sql.init.AbstractScriptDatabaseInitializer.runScripts(AbstractScriptDatabaseInitializer.java:145)
+	at org.springframework.boot.sql.init.AbstractScriptDatabaseInitializer.applyScripts(AbstractScriptDatabaseInitializer.java:107)
+	at org.springframework.boot.sql.init.AbstractScriptDatabaseInitializer.applyDataScripts(AbstractScriptDatabaseInitializer.java:101)
+	at org.springframework.boot.sql.init.AbstractScriptDatabaseInitializer.initializeDatabase(AbstractScriptDatabaseInitializer.java:76)
+	at org.springframework.boot.sql.init.AbstractScriptDatabaseInitializer.afterPropertiesSet(AbstractScriptDatabaseInitializer.java:65)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.invokeInitMethods(AbstractAutowireCapableBeanFactory.java:1863)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.initializeBean(AbstractAutowireCapableBeanFactory.java:1800)
+	... 23 common frames omitted
+Caused by: org.h2.jdbc.JdbcSQLSyntaxErrorException: Синтаксическая ошибка в выражении SQL "[*]# ROLES INSERT INTO ROLES(CREATIONDATETIME, UPDATEDATETIME, NAME) VALUE (NOW(),NOW(),'ADMIN')"
+Syntax error in SQL statement "[*]# ROLES INSERT INTO ROLES(CREATIONDATETIME, UPDATEDATETIME, NAME) VALUE (NOW(),NOW(),'ADMIN')"; SQL statement:
+# ROLES INSERT INTO roles(creationDateTime, updateDateTime, name) VALUE (NOW(),NOW(),'ADMIN') [42000-200]
+	at org.h2.message.DbException.getJdbcSQLException(DbException.java:453)
+	at org.h2.message.DbException.getJdbcSQLException(DbException.java:429)
+	at org.h2.message.DbException.get(DbException.java:205)
+	at org.h2.message.DbException.get(DbException.java:181)
+	at org.h2.message.DbException.getSyntaxError(DbException.java:229)
+	at org.h2.command.Parser.getSyntaxError(Parser.java:1051)
+	at org.h2.command.Parser.getSpecialType1(Parser.java:5620)
+	at org.h2.command.Parser.read(Parser.java:5132)
+	at org.h2.command.Parser.parse(Parser.java:842)
+	at org.h2.command.Parser.parse(Parser.java:819)
+	at org.h2.command.Parser.prepareCommand(Parser.java:738)
+	at org.h2.engine.Session.prepareLocal(Session.java:657)
+	at org.h2.engine.Session.prepareCommand(Session.java:595)
+	at org.h2.jdbc.JdbcConnection.prepareCommand(JdbcConnection.java:1235)
+	at org.h2.jdbc.JdbcStatement.executeInternal(JdbcStatement.java:212)
+	at org.h2.jdbc.JdbcStatement.execute(JdbcStatement.java:201)
+	at com.zaxxer.hikari.pool.ProxyStatement.execute(ProxyStatement.java:94)
+	at com.zaxxer.hikari.pool.HikariProxyStatement.execute(HikariProxyStatement.java)
+	at org.springframework.jdbc.datasource.init.ScriptUtils.executeSqlScript(ScriptUtils.java:261)
+	... 33 common frames omitted
+2022-05-06 22:00:48,060 INFO com.example.diplomprojectmanagementprogramc51.DiplomProjectManagementProgramC51Application [restartedMain] Starting DiplomProjectManagementProgramC51Application using Java 11.0.12 on DESKTOP-RJU4KTA with PID 21332 (D:\JavaStuding\diplom-project-management-program-c51\target\classes started by User in D:\JavaStuding\diplom-project-management-program-c51)
+2022-05-06 22:00:48,081 INFO com.example.diplomprojectmanagementprogramc51.DiplomProjectManagementProgramC51Application [restartedMain] The following 1 profile is active: "dev"
+2022-05-06 22:00:48,204 INFO org.springframework.boot.devtools.env.DevToolsPropertyDefaultsPostProcessor [restartedMain] Devtools property defaults active! Set 'spring.devtools.add-properties' to 'false' to disable
+2022-05-06 22:00:48,204 INFO org.springframework.boot.devtools.env.DevToolsPropertyDefaultsPostProcessor [restartedMain] For additional web related logging consider setting the 'logging.level.web' property to 'DEBUG'
+2022-05-06 22:00:50,879 INFO org.springframework.data.repository.config.RepositoryConfigurationDelegate [restartedMain] Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2022-05-06 22:00:51,196 INFO org.springframework.data.repository.config.RepositoryConfigurationDelegate [restartedMain] Finished Spring Data repository scanning in 304 ms. Found 10 JPA repository interfaces.
+2022-05-06 22:00:52,699 INFO org.springframework.boot.web.embedded.tomcat.TomcatWebServer [restartedMain] Tomcat initialized with port(s): 8080 (http)
+2022-05-06 22:00:52,715 INFO org.apache.catalina.core.StandardService [restartedMain] Starting service [Tomcat]
+2022-05-06 22:00:52,716 INFO org.apache.catalina.core.StandardEngine [restartedMain] Starting Servlet engine: [Apache Tomcat/9.0.62]
+2022-05-06 22:00:52,905 INFO org.apache.catalina.core.ContainerBase.[Tomcat].[localhost].[/] [restartedMain] Initializing Spring embedded WebApplicationContext
+2022-05-06 22:00:52,906 INFO org.springframework.boot.web.servlet.context.ServletWebServerApplicationContext [restartedMain] Root WebApplicationContext: initialization completed in 4701 ms
+2022-05-06 22:00:52,996 INFO com.zaxxer.hikari.HikariDataSource [restartedMain] HikariPool-1 - Starting...
+2022-05-06 22:00:53,274 INFO com.zaxxer.hikari.HikariDataSource [restartedMain] HikariPool-1 - Start completed.
+2022-05-06 22:00:53,287 INFO org.springframework.boot.autoconfigure.h2.H2ConsoleAutoConfiguration [restartedMain] H2 console available at '/h2-console'. Database available at 'jdbc:h2:mem:pmp_db'
+2022-05-06 22:00:53,446 WARN org.springframework.boot.web.servlet.context.AnnotationConfigServletWebServerApplicationContext [restartedMain] Exception encountered during context initialization - cancelling refresh attempt: org.springframework.beans.factory.BeanCreationException: Error creating bean with name 'dataSourceScriptDatabaseInitializer' defined in class path resource [org/springframework/boot/autoconfigure/sql/init/DataSourceInitializationConfiguration.class]: Invocation of init method failed; nested exception is org.springframework.jdbc.datasource.init.ScriptStatementFailedException: Failed to execute SQL script statement #1 of URL [file:/D:/JavaStuding/diplom-project-management-program-c51/target/classes/data.sql]: # ROLES INSERT INTO roles(creationDateTime, updateDateTime, name) VALUE (NOW(),NOW(),'ADMIN'); nested exception is org.h2.jdbc.JdbcSQLSyntaxErrorException: Синтаксическая ошибка в выражении SQL "[*]# ROLES INSERT INTO ROLES(CREATIONDATETIME, UPDATEDATETIME, NAME) VALUE (NOW(),NOW(),'ADMIN')"
+Syntax error in SQL statement "[*]# ROLES INSERT INTO ROLES(CREATIONDATETIME, UPDATEDATETIME, NAME) VALUE (NOW(),NOW(),'ADMIN')"; SQL statement:
+# ROLES INSERT INTO roles(creationDateTime, updateDateTime, name) VALUE (NOW(),NOW(),'ADMIN') [42000-200]
+2022-05-06 22:00:53,447 INFO com.zaxxer.hikari.HikariDataSource [restartedMain] HikariPool-1 - Shutdown initiated...
+2022-05-06 22:00:53,454 INFO com.zaxxer.hikari.HikariDataSource [restartedMain] HikariPool-1 - Shutdown completed.
+2022-05-06 22:00:53,457 INFO org.apache.catalina.core.StandardService [restartedMain] Stopping service [Tomcat]
+2022-05-06 22:00:53,474 INFO org.springframework.boot.autoconfigure.logging.ConditionEvaluationReportLoggingListener [restartedMain] 
+
+Error starting ApplicationContext. To display the conditions report re-run your application with 'debug' enabled.
+2022-05-06 22:00:53,538 ERROR org.springframework.boot.SpringApplication [restartedMain] Application run failed
+org.springframework.beans.factory.BeanCreationException: Error creating bean with name 'dataSourceScriptDatabaseInitializer' defined in class path resource [org/springframework/boot/autoconfigure/sql/init/DataSourceInitializationConfiguration.class]: Invocation of init method failed; nested exception is org.springframework.jdbc.datasource.init.ScriptStatementFailedException: Failed to execute SQL script statement #1 of URL [file:/D:/JavaStuding/diplom-project-management-program-c51/target/classes/data.sql]: # ROLES INSERT INTO roles(creationDateTime, updateDateTime, name) VALUE (NOW(),NOW(),'ADMIN'); nested exception is org.h2.jdbc.JdbcSQLSyntaxErrorException: Синтаксическая ошибка в выражении SQL "[*]# ROLES INSERT INTO ROLES(CREATIONDATETIME, UPDATEDATETIME, NAME) VALUE (NOW(),NOW(),'ADMIN')"
+Syntax error in SQL statement "[*]# ROLES INSERT INTO ROLES(CREATIONDATETIME, UPDATEDATETIME, NAME) VALUE (NOW(),NOW(),'ADMIN')"; SQL statement:
+# ROLES INSERT INTO roles(creationDateTime, updateDateTime, name) VALUE (NOW(),NOW(),'ADMIN') [42000-200]
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.initializeBean(AbstractAutowireCapableBeanFactory.java:1804)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.doCreateBean(AbstractAutowireCapableBeanFactory.java:620)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBean(AbstractAutowireCapableBeanFactory.java:542)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.lambda$doGetBean$0(AbstractBeanFactory.java:335)
+	at org.springframework.beans.factory.support.DefaultSingletonBeanRegistry.getSingleton(DefaultSingletonBeanRegistry.java:234)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.doGetBean(AbstractBeanFactory.java:333)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.getBean(AbstractBeanFactory.java:208)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.doGetBean(AbstractBeanFactory.java:322)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.getBean(AbstractBeanFactory.java:208)
+	at org.springframework.context.support.AbstractApplicationContext.getBean(AbstractApplicationContext.java:1154)
+	at org.springframework.context.support.AbstractApplicationContext.finishBeanFactoryInitialization(AbstractApplicationContext.java:908)
+	at org.springframework.context.support.AbstractApplicationContext.refresh(AbstractApplicationContext.java:583)
+	at org.springframework.boot.web.servlet.context.ServletWebServerApplicationContext.refresh(ServletWebServerApplicationContext.java:145)
+	at org.springframework.boot.SpringApplication.refresh(SpringApplication.java:740)
+	at org.springframework.boot.SpringApplication.refreshContext(SpringApplication.java:415)
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:303)
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1312)
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1301)
+	at com.example.diplomprojectmanagementprogramc51.DiplomProjectManagementProgramC51Application.main(DiplomProjectManagementProgramC51Application.java:37)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
+	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:566)
+	at org.springframework.boot.devtools.restart.RestartLauncher.run(RestartLauncher.java:49)
+Caused by: org.springframework.jdbc.datasource.init.ScriptStatementFailedException: Failed to execute SQL script statement #1 of URL [file:/D:/JavaStuding/diplom-project-management-program-c51/target/classes/data.sql]: # ROLES INSERT INTO roles(creationDateTime, updateDateTime, name) VALUE (NOW(),NOW(),'ADMIN'); nested exception is org.h2.jdbc.JdbcSQLSyntaxErrorException: Синтаксическая ошибка в выражении SQL "[*]# ROLES INSERT INTO ROLES(CREATIONDATETIME, UPDATEDATETIME, NAME) VALUE (NOW(),NOW(),'ADMIN')"
+Syntax error in SQL statement "[*]# ROLES INSERT INTO ROLES(CREATIONDATETIME, UPDATEDATETIME, NAME) VALUE (NOW(),NOW(),'ADMIN')"; SQL statement:
+# ROLES INSERT INTO roles(creationDateTime, updateDateTime, name) VALUE (NOW(),NOW(),'ADMIN') [42000-200]
+	at org.springframework.jdbc.datasource.init.ScriptUtils.executeSqlScript(ScriptUtils.java:282)
+	at org.springframework.jdbc.datasource.init.ResourceDatabasePopulator.populate(ResourceDatabasePopulator.java:254)
+	at org.springframework.jdbc.datasource.init.DatabasePopulatorUtils.execute(DatabasePopulatorUtils.java:54)
+	at org.springframework.boot.jdbc.init.DataSourceScriptDatabaseInitializer.runScripts(DataSourceScriptDatabaseInitializer.java:90)
+	at org.springframework.boot.sql.init.AbstractScriptDatabaseInitializer.runScripts(AbstractScriptDatabaseInitializer.java:145)
+	at org.springframework.boot.sql.init.AbstractScriptDatabaseInitializer.applyScripts(AbstractScriptDatabaseInitializer.java:107)
+	at org.springframework.boot.sql.init.AbstractScriptDatabaseInitializer.applyDataScripts(AbstractScriptDatabaseInitializer.java:101)
+	at org.springframework.boot.sql.init.AbstractScriptDatabaseInitializer.initializeDatabase(AbstractScriptDatabaseInitializer.java:76)
+	at org.springframework.boot.sql.init.AbstractScriptDatabaseInitializer.afterPropertiesSet(AbstractScriptDatabaseInitializer.java:65)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.invokeInitMethods(AbstractAutowireCapableBeanFactory.java:1863)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.initializeBean(AbstractAutowireCapableBeanFactory.java:1800)
+	... 23 common frames omitted
+Caused by: org.h2.jdbc.JdbcSQLSyntaxErrorException: Синтаксическая ошибка в выражении SQL "[*]# ROLES INSERT INTO ROLES(CREATIONDATETIME, UPDATEDATETIME, NAME) VALUE (NOW(),NOW(),'ADMIN')"
+Syntax error in SQL statement "[*]# ROLES INSERT INTO ROLES(CREATIONDATETIME, UPDATEDATETIME, NAME) VALUE (NOW(),NOW(),'ADMIN')"; SQL statement:
+# ROLES INSERT INTO roles(creationDateTime, updateDateTime, name) VALUE (NOW(),NOW(),'ADMIN') [42000-200]
+	at org.h2.message.DbException.getJdbcSQLException(DbException.java:453)
+	at org.h2.message.DbException.getJdbcSQLException(DbException.java:429)
+	at org.h2.message.DbException.get(DbException.java:205)
+	at org.h2.message.DbException.get(DbException.java:181)
+	at org.h2.message.DbException.getSyntaxError(DbException.java:229)
+	at org.h2.command.Parser.getSyntaxError(Parser.java:1051)
+	at org.h2.command.Parser.getSpecialType1(Parser.java:5620)
+	at org.h2.command.Parser.read(Parser.java:5132)
+	at org.h2.command.Parser.parse(Parser.java:842)
+	at org.h2.command.Parser.parse(Parser.java:819)
+	at org.h2.command.Parser.prepareCommand(Parser.java:738)
+	at org.h2.engine.Session.prepareLocal(Session.java:657)
+	at org.h2.engine.Session.prepareCommand(Session.java:595)
+	at org.h2.jdbc.JdbcConnection.prepareCommand(JdbcConnection.java:1235)
+	at org.h2.jdbc.JdbcStatement.executeInternal(JdbcStatement.java:212)
+	at org.h2.jdbc.JdbcStatement.execute(JdbcStatement.java:201)
+	at com.zaxxer.hikari.pool.ProxyStatement.execute(ProxyStatement.java:94)
+	at com.zaxxer.hikari.pool.HikariProxyStatement.execute(HikariProxyStatement.java)
+	at org.springframework.jdbc.datasource.init.ScriptUtils.executeSqlScript(ScriptUtils.java:261)
+	... 33 common frames omitted
+2022-05-06 22:02:48,727 INFO com.example.diplomprojectmanagementprogramc51.DiplomProjectManagementProgramC51Application [restartedMain] Starting DiplomProjectManagementProgramC51Application using Java 11.0.12 on DESKTOP-RJU4KTA with PID 15724 (D:\JavaStuding\diplom-project-management-program-c51\target\classes started by User in D:\JavaStuding\diplom-project-management-program-c51)
+2022-05-06 22:02:48,729 INFO com.example.diplomprojectmanagementprogramc51.DiplomProjectManagementProgramC51Application [restartedMain] The following 1 profile is active: "dev"
+2022-05-06 22:02:48,810 INFO org.springframework.boot.devtools.env.DevToolsPropertyDefaultsPostProcessor [restartedMain] Devtools property defaults active! Set 'spring.devtools.add-properties' to 'false' to disable
+2022-05-06 22:02:48,811 INFO org.springframework.boot.devtools.env.DevToolsPropertyDefaultsPostProcessor [restartedMain] For additional web related logging consider setting the 'logging.level.web' property to 'DEBUG'
+2022-05-06 22:02:49,981 INFO org.springframework.data.repository.config.RepositoryConfigurationDelegate [restartedMain] Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2022-05-06 22:02:50,093 INFO org.springframework.data.repository.config.RepositoryConfigurationDelegate [restartedMain] Finished Spring Data repository scanning in 102 ms. Found 10 JPA repository interfaces.
+2022-05-06 22:02:50,977 INFO org.springframework.boot.web.embedded.tomcat.TomcatWebServer [restartedMain] Tomcat initialized with port(s): 8080 (http)
+2022-05-06 22:02:50,987 INFO org.apache.catalina.core.StandardService [restartedMain] Starting service [Tomcat]
+2022-05-06 22:02:50,988 INFO org.apache.catalina.core.StandardEngine [restartedMain] Starting Servlet engine: [Apache Tomcat/9.0.62]
+2022-05-06 22:02:51,111 INFO org.apache.catalina.core.ContainerBase.[Tomcat].[localhost].[/] [restartedMain] Initializing Spring embedded WebApplicationContext
+2022-05-06 22:02:51,111 INFO org.springframework.boot.web.servlet.context.ServletWebServerApplicationContext [restartedMain] Root WebApplicationContext: initialization completed in 2299 ms
+2022-05-06 22:02:51,153 INFO com.zaxxer.hikari.HikariDataSource [restartedMain] HikariPool-1 - Starting...
+2022-05-06 22:02:51,296 INFO com.zaxxer.hikari.HikariDataSource [restartedMain] HikariPool-1 - Start completed.
+2022-05-06 22:02:51,308 INFO org.springframework.boot.autoconfigure.h2.H2ConsoleAutoConfiguration [restartedMain] H2 console available at '/h2-console'. Database available at 'jdbc:h2:mem:pmp_db'
+2022-05-06 22:02:51,548 WARN org.springframework.boot.web.servlet.context.AnnotationConfigServletWebServerApplicationContext [restartedMain] Exception encountered during context initialization - cancelling refresh attempt: org.springframework.beans.factory.BeanCreationException: Error creating bean with name 'dataSourceScriptDatabaseInitializer' defined in class path resource [org/springframework/boot/autoconfigure/sql/init/DataSourceInitializationConfiguration.class]: Invocation of init method failed; nested exception is org.springframework.jdbc.datasource.init.ScriptStatementFailedException: Failed to execute SQL script statement #1 of URL [file:/D:/JavaStuding/diplom-project-management-program-c51/target/classes/data.sql]: INSERT INTO roles(creationDateTime, updateDateTime, name) VALUE (NOW(),NOW(),'ADMIN'); nested exception is org.h2.jdbc.JdbcSQLSyntaxErrorException: Таблица "ROLES" не найдена
+Table "ROLES" not found; SQL statement:
+INSERT INTO roles(creationDateTime, updateDateTime, name) VALUE (NOW(),NOW(),'ADMIN') [42102-200]
+2022-05-06 22:02:51,549 INFO com.zaxxer.hikari.HikariDataSource [restartedMain] HikariPool-1 - Shutdown initiated...
+2022-05-06 22:02:51,562 INFO com.zaxxer.hikari.HikariDataSource [restartedMain] HikariPool-1 - Shutdown completed.
+2022-05-06 22:02:51,566 INFO org.apache.catalina.core.StandardService [restartedMain] Stopping service [Tomcat]
+2022-05-06 22:02:51,583 INFO org.springframework.boot.autoconfigure.logging.ConditionEvaluationReportLoggingListener [restartedMain] 
+
+Error starting ApplicationContext. To display the conditions report re-run your application with 'debug' enabled.
+2022-05-06 22:02:51,621 ERROR org.springframework.boot.SpringApplication [restartedMain] Application run failed
+org.springframework.beans.factory.BeanCreationException: Error creating bean with name 'dataSourceScriptDatabaseInitializer' defined in class path resource [org/springframework/boot/autoconfigure/sql/init/DataSourceInitializationConfiguration.class]: Invocation of init method failed; nested exception is org.springframework.jdbc.datasource.init.ScriptStatementFailedException: Failed to execute SQL script statement #1 of URL [file:/D:/JavaStuding/diplom-project-management-program-c51/target/classes/data.sql]: INSERT INTO roles(creationDateTime, updateDateTime, name) VALUE (NOW(),NOW(),'ADMIN'); nested exception is org.h2.jdbc.JdbcSQLSyntaxErrorException: Таблица "ROLES" не найдена
+Table "ROLES" not found; SQL statement:
+INSERT INTO roles(creationDateTime, updateDateTime, name) VALUE (NOW(),NOW(),'ADMIN') [42102-200]
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.initializeBean(AbstractAutowireCapableBeanFactory.java:1804)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.doCreateBean(AbstractAutowireCapableBeanFactory.java:620)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBean(AbstractAutowireCapableBeanFactory.java:542)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.lambda$doGetBean$0(AbstractBeanFactory.java:335)
+	at org.springframework.beans.factory.support.DefaultSingletonBeanRegistry.getSingleton(DefaultSingletonBeanRegistry.java:234)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.doGetBean(AbstractBeanFactory.java:333)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.getBean(AbstractBeanFactory.java:208)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.doGetBean(AbstractBeanFactory.java:322)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.getBean(AbstractBeanFactory.java:208)
+	at org.springframework.context.support.AbstractApplicationContext.getBean(AbstractApplicationContext.java:1154)
+	at org.springframework.context.support.AbstractApplicationContext.finishBeanFactoryInitialization(AbstractApplicationContext.java:908)
+	at org.springframework.context.support.AbstractApplicationContext.refresh(AbstractApplicationContext.java:583)
+	at org.springframework.boot.web.servlet.context.ServletWebServerApplicationContext.refresh(ServletWebServerApplicationContext.java:145)
+	at org.springframework.boot.SpringApplication.refresh(SpringApplication.java:740)
+	at org.springframework.boot.SpringApplication.refreshContext(SpringApplication.java:415)
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:303)
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1312)
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1301)
+	at com.example.diplomprojectmanagementprogramc51.DiplomProjectManagementProgramC51Application.main(DiplomProjectManagementProgramC51Application.java:37)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
+	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:566)
+	at org.springframework.boot.devtools.restart.RestartLauncher.run(RestartLauncher.java:49)
+Caused by: org.springframework.jdbc.datasource.init.ScriptStatementFailedException: Failed to execute SQL script statement #1 of URL [file:/D:/JavaStuding/diplom-project-management-program-c51/target/classes/data.sql]: INSERT INTO roles(creationDateTime, updateDateTime, name) VALUE (NOW(),NOW(),'ADMIN'); nested exception is org.h2.jdbc.JdbcSQLSyntaxErrorException: Таблица "ROLES" не найдена
+Table "ROLES" not found; SQL statement:
+INSERT INTO roles(creationDateTime, updateDateTime, name) VALUE (NOW(),NOW(),'ADMIN') [42102-200]
+	at org.springframework.jdbc.datasource.init.ScriptUtils.executeSqlScript(ScriptUtils.java:282)
+	at org.springframework.jdbc.datasource.init.ResourceDatabasePopulator.populate(ResourceDatabasePopulator.java:254)
+	at org.springframework.jdbc.datasource.init.DatabasePopulatorUtils.execute(DatabasePopulatorUtils.java:54)
+	at org.springframework.boot.jdbc.init.DataSourceScriptDatabaseInitializer.runScripts(DataSourceScriptDatabaseInitializer.java:90)
+	at org.springframework.boot.sql.init.AbstractScriptDatabaseInitializer.runScripts(AbstractScriptDatabaseInitializer.java:145)
+	at org.springframework.boot.sql.init.AbstractScriptDatabaseInitializer.applyScripts(AbstractScriptDatabaseInitializer.java:107)
+	at org.springframework.boot.sql.init.AbstractScriptDatabaseInitializer.applyDataScripts(AbstractScriptDatabaseInitializer.java:101)
+	at org.springframework.boot.sql.init.AbstractScriptDatabaseInitializer.initializeDatabase(AbstractScriptDatabaseInitializer.java:76)
+	at org.springframework.boot.sql.init.AbstractScriptDatabaseInitializer.afterPropertiesSet(AbstractScriptDatabaseInitializer.java:65)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.invokeInitMethods(AbstractAutowireCapableBeanFactory.java:1863)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.initializeBean(AbstractAutowireCapableBeanFactory.java:1800)
+	... 23 common frames omitted
+Caused by: org.h2.jdbc.JdbcSQLSyntaxErrorException: Таблица "ROLES" не найдена
+Table "ROLES" not found; SQL statement:
+INSERT INTO roles(creationDateTime, updateDateTime, name) VALUE (NOW(),NOW(),'ADMIN') [42102-200]
+	at org.h2.message.DbException.getJdbcSQLException(DbException.java:453)
+	at org.h2.message.DbException.getJdbcSQLException(DbException.java:429)
+	at org.h2.message.DbException.get(DbException.java:205)
+	at org.h2.message.DbException.get(DbException.java:181)
+	at org.h2.command.Parser.readTableOrView(Parser.java:7628)
+	at org.h2.command.Parser.readTableOrView(Parser.java:7599)
+	at org.h2.command.Parser.parseInsert(Parser.java:1747)
+	at org.h2.command.Parser.parsePrepared(Parser.java:954)
+	at org.h2.command.Parser.parse(Parser.java:843)
+	at org.h2.command.Parser.parse(Parser.java:815)
+	at org.h2.command.Parser.prepareCommand(Parser.java:738)
+	at org.h2.engine.Session.prepareLocal(Session.java:657)
+	at org.h2.engine.Session.prepareCommand(Session.java:595)
+	at org.h2.jdbc.JdbcConnection.prepareCommand(JdbcConnection.java:1235)
+	at org.h2.jdbc.JdbcStatement.executeInternal(JdbcStatement.java:212)
+	at org.h2.jdbc.JdbcStatement.execute(JdbcStatement.java:201)
+	at com.zaxxer.hikari.pool.ProxyStatement.execute(ProxyStatement.java:94)
+	at com.zaxxer.hikari.pool.HikariProxyStatement.execute(HikariProxyStatement.java)
+	at org.springframework.jdbc.datasource.init.ScriptUtils.executeSqlScript(ScriptUtils.java:261)
+	... 33 common frames omitted
+2022-05-06 22:22:09,071 INFO com.example.diplomprojectmanagementprogramc51.DiplomProjectManagementProgramC51Application [restartedMain] Starting DiplomProjectManagementProgramC51Application using Java 11.0.12 on DESKTOP-RJU4KTA with PID 20176 (D:\JavaStuding\diplom-project-management-program-c51\target\classes started by User in D:\JavaStuding\diplom-project-management-program-c51)
+2022-05-06 22:22:09,074 INFO com.example.diplomprojectmanagementprogramc51.DiplomProjectManagementProgramC51Application [restartedMain] The following 1 profile is active: "dev"
+2022-05-06 22:22:09,162 INFO org.springframework.boot.devtools.env.DevToolsPropertyDefaultsPostProcessor [restartedMain] Devtools property defaults active! Set 'spring.devtools.add-properties' to 'false' to disable
+2022-05-06 22:22:09,162 INFO org.springframework.boot.devtools.env.DevToolsPropertyDefaultsPostProcessor [restartedMain] For additional web related logging consider setting the 'logging.level.web' property to 'DEBUG'
+2022-05-06 22:22:12,243 INFO org.springframework.data.repository.config.RepositoryConfigurationDelegate [restartedMain] Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2022-05-06 22:22:12,360 INFO org.springframework.data.repository.config.RepositoryConfigurationDelegate [restartedMain] Finished Spring Data repository scanning in 107 ms. Found 10 JPA repository interfaces.
+2022-05-06 22:22:13,202 INFO org.springframework.boot.web.embedded.tomcat.TomcatWebServer [restartedMain] Tomcat initialized with port(s): 8080 (http)
+2022-05-06 22:22:13,213 INFO org.apache.catalina.core.StandardService [restartedMain] Starting service [Tomcat]
+2022-05-06 22:22:13,214 INFO org.apache.catalina.core.StandardEngine [restartedMain] Starting Servlet engine: [Apache Tomcat/9.0.62]
+2022-05-06 22:22:13,354 INFO org.apache.catalina.core.ContainerBase.[Tomcat].[localhost].[/] [restartedMain] Initializing Spring embedded WebApplicationContext
+2022-05-06 22:22:13,354 INFO org.springframework.boot.web.servlet.context.ServletWebServerApplicationContext [restartedMain] Root WebApplicationContext: initialization completed in 4190 ms
+2022-05-06 22:22:13,775 WARN org.springframework.boot.web.servlet.context.AnnotationConfigServletWebServerApplicationContext [restartedMain] Exception encountered during context initialization - cancelling refresh attempt: org.springframework.beans.factory.UnsatisfiedDependencyException: Error creating bean with name 'securityConfiguration' defined in file [D:\JavaStuding\diplom-project-management-program-c51\target\classes\com\example\diplomprojectmanagementprogramc51\configuration\SecurityConfiguration.class]: Unsatisfied dependency expressed through constructor parameter 0; nested exception is org.springframework.beans.factory.UnsatisfiedDependencyException: Error creating bean with name 'userService' defined in file [D:\JavaStuding\diplom-project-management-program-c51\target\classes\com\example\diplomprojectmanagementprogramc51\service\UserService.class]: Unsatisfied dependency expressed through constructor parameter 0; nested exception is org.springframework.beans.factory.BeanCreationException: Error creating bean with name 'userRepository' defined in com.example.diplomprojectmanagementprogramc51.repository.UserRepository defined in @EnableJpaRepositories declared on JpaRepositoriesRegistrar.EnableJpaRepositoriesConfiguration: Cannot create inner bean '(inner bean)#7401313' of type [org.springframework.orm.jpa.SharedEntityManagerCreator] while setting bean property 'entityManager'; nested exception is org.springframework.beans.factory.BeanCreationException: Error creating bean with name '(inner bean)#7401313': Cannot resolve reference to bean 'entityManagerFactory' while setting constructor argument; nested exception is org.springframework.beans.factory.NoSuchBeanDefinitionException: No bean named 'entityManagerFactory' available
+2022-05-06 22:22:13,779 INFO org.apache.catalina.core.StandardService [restartedMain] Stopping service [Tomcat]
+2022-05-06 22:22:13,795 INFO org.springframework.boot.autoconfigure.logging.ConditionEvaluationReportLoggingListener [restartedMain] 
+
+Error starting ApplicationContext. To display the conditions report re-run your application with 'debug' enabled.
+2022-05-06 22:22:13,825 ERROR org.springframework.boot.diagnostics.LoggingFailureAnalysisReporter [restartedMain] 
+
+***************************
+APPLICATION FAILED TO START
+***************************
+
+Description:
+
+Parameter 0 of constructor in com.example.diplomprojectmanagementprogramc51.service.UserService required a bean named 'entityManagerFactory' that could not be found.
+
+
+Action:
+
+Consider defining a bean named 'entityManagerFactory' in your configuration.
+
