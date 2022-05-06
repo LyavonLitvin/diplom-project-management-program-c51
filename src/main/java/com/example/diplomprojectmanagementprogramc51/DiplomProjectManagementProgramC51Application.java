@@ -36,26 +36,26 @@ public class DiplomProjectManagementProgramC51Application {
     public static void main(String[] args) {
         SpringApplication.run(DiplomProjectManagementProgramC51Application.class, args);
 
-        Category category1 = new Category("front-end");
-        Category category2 = new Category("back-end");
-        List<Category> categories = Arrays.asList(category1, category2);
+//        Category category1 = new Category("front-end");
+//        Category category2 = new Category("back-end");
+//        List<Category> categories = Arrays.asList(category1, category2);
         //categoryRepository.saveAll(categories);
 
-        Department department1 = new Department("managers");
-        Department department2 = new Department("developers");
-        List<Department> departments = Arrays.asList(department1, department2);
+//        Department department1 = new Department("managers");
+//        Department department2 = new Department("developers");
+//        List<Department> departments = Arrays.asList(department1, department2);
         //departmentRepository.saveAll(departments);
 
-        Priority priority1 = new Priority(PriorityName.HIGH.name());
-        Priority priority2 = new Priority(PriorityName.NORMAL.name());
-        Priority priority3 = new Priority(PriorityName.LOW.name());
-        List<Priority> priorities = Arrays.asList(priority1, priority2, priority3);
+//        Priority priority1 = new Priority(PriorityName.HIGH.name());
+//        Priority priority2 = new Priority(PriorityName.NORMAL.name());
+//        Priority priority3 = new Priority(PriorityName.LOW.name());
+//        List<Priority> priorities = Arrays.asList(priority1, priority2, priority3);
         //priorityRepository.saveAll(priorities);
 
-        Status status1 = new Status(StatusName.TO_DO.name());
-        Status status2 = new Status(StatusName.IN_PROGRESS.name());
-        Status status3 = new Status(StatusName.DONE.name());
-        List<Status> statuses = Arrays.asList(status1, status2, status3);
+//        Status status1 = new Status(StatusName.TO_DO.name());
+//        Status status2 = new Status(StatusName.IN_PROGRESS.name());
+//        Status status3 = new Status(StatusName.DONE.name());
+//        List<Status> statuses = Arrays.asList(status1, status2, status3);
         //statusRepository.saveAll(statuses);
 
     }

@@ -2,6 +2,7 @@ package com.example.diplomprojectmanagementprogramc51.entity;
 
 //import com.example.diplomprojectmanagementprogramc51.hibernatelistener.GeneralCreateUpdateListener;
 import lombok.*;
+import org.springframework.format.annotation.DateTimeFormat;
 
 import javax.persistence.*;
 import java.time.LocalDate;
@@ -48,10 +49,13 @@ public class Task extends BasicEntity{
     @JoinColumn(name = "priority_id", nullable = false)
     private Priority priority;
 
+    @DateTimeFormat(pattern = "hh")
     private LocalTime time;
     @Column(name = "time_left")
+    @DateTimeFormat(pattern = "hh")
     private LocalTime timeLeft;
     @Column(name = "start_date")
+    @DateTimeFormat(pattern = "yyyy-MM-dd")
     private LocalDate startDate;
 
     @OneToMany

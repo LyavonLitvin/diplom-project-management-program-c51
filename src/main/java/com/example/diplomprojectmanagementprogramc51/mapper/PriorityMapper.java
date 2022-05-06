@@ -6,7 +6,7 @@ import org.mapstruct.Mapper;
 import org.springframework.stereotype.Component;
 
 @Component
-@Mapper
+@Mapper(componentModel = "spring")
 public interface PriorityMapper {
     PriorityDTO priorityToPriorityDTO(Priority priority);
     Priority priorityDTOToPriority(PriorityDTO priorityDTO);

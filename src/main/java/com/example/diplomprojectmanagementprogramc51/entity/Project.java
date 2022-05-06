@@ -19,7 +19,6 @@ import java.util.Set;
 @EqualsAndHashCode(callSuper = false, exclude = {"users"})
 public class Project extends BasicEntity {
 
-
     @Column(unique = true, length = 45, nullable = false)
     private String name;
     @Column(nullable = false)

@@ -6,7 +6,7 @@ import org.mapstruct.Mapper;
 import org.springframework.stereotype.Component;
 
 @Component
-@Mapper
+@Mapper(componentModel = "spring")
 public interface CategoryMapper {
     CategoryDTO categoryToCategoryDTO(Category category);
     Category categoryDTOToCategory(CategoryDTO categoryDTO);

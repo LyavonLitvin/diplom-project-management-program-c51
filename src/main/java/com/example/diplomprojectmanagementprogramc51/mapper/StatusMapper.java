@@ -6,7 +6,7 @@ import org.mapstruct.Mapper;
 import org.springframework.stereotype.Component;
 
 @Component
-@Mapper
+@Mapper(componentModel = "spring")
 public interface StatusMapper {
     StatusDTO statusToStatusDTO(Status status);
     Status statusDTOToStatus(StatusDTO statusDTO);
