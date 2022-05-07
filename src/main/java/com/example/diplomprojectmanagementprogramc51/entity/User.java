@@ -30,9 +30,9 @@ public class User extends BasicEntity implements UserDetails {
 	private String firstName;
 	@Column(length = 40)
 	private String lastName;
-//	@ManyToOne(targetEntity = Department.class)
-//	@JoinColumn(name = "department_id", nullable = false)
-//	private Department department;
+	@ManyToOne(targetEntity = Department.class)
+	@JoinColumn(name = "department_id", nullable = false)
+	private Department department;
 
 	@ManyToMany(cascade = {CascadeType.MERGE})
 	@JoinTable(name="roles_users", joinColumns = @JoinColumn(name = "user_id"),

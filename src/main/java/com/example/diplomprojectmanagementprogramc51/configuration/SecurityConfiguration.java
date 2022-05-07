@@ -45,31 +45,16 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
                 .anyRequest().authenticated()
                 .and()
                 .formLogin()
-                .loginPage("/user/login").permitAll();
-//                .usernameParameter("username").passwordParameter("password")
-//                .failureUrl("/user/login?failed=true")
-//                .and()
-//                .logout()
-//                .logoutUrl("/user/logout")
-//                .logoutSuccessUrl("/user/login")
-//                .invalidateHttpSession(true);
+                .loginPage("/user/login").permitAll()
+                .usernameParameter("username").passwordParameter("password")
+                .failureUrl("/user/login?failed=true")
+                .and()
+                .logout()
+                .logoutUrl("/user/logout")
+                .logoutSuccessUrl("/user/login")
+                .invalidateHttpSession(true);
 
     }
-//        http
-//                .authorizeRequests()
-//                .antMatchers("/", "/user/reg", "/db/**").permitAll()
-//                .anyRequest().authenticated()
-//                .and()
-//                .formLogin()
-//                .loginPage("/user/login")
-//                .permitAll()
-//                .and()
-//                .logout()
-//                .permitAll();
-//
-//        http.csrf().disable();
-//        http.headers().frameOptions().disable();
-//    }
 
     @Bean
     public BCryptPasswordEncoder passwordEncoder() {
@@ -78,10 +63,10 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
 
     @Override
     protected void configure(AuthenticationManagerBuilder auth) throws Exception {
-//        auth.inMemoryAuthentication()
-//                .withUser("test")
-//                .password(passwordEncoder().encode("test"))
-//                .roles("USER");
-        auth.userDetailsService(userService).passwordEncoder(passwordEncoder());
+        auth.inMemoryAuthentication()
+                .withUser("test")
+                .password(passwordEncoder().encode("test"))
+                .roles("USER");
+        //auth.userDetailsService(userService).passwordEncoder(passwordEncoder());
     }
 }

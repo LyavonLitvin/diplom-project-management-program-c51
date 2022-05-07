@@ -1,6 +1,7 @@
 package com.example.diplomprojectmanagementprogramc51.controller;
 
 import com.example.diplomprojectmanagementprogramc51.dto.RegisteringUserDTO;
+import com.example.diplomprojectmanagementprogramc51.dto.UserDTO;
 import com.example.diplomprojectmanagementprogramc51.entity.User;
 import com.example.diplomprojectmanagementprogramc51.service.UserService;
 import org.springframework.stereotype.Controller;
@@ -20,9 +21,11 @@ import static com.example.diplomprojectmanagementprogramc51.controller.Exception
 public class UserController {
 
 	public static final String ATTRIBUTE_USER = "user";
+	public static final String PATH_INDEX_TEMPLATE = "/";
 	public static final String PATH_REG_TEMPLATE = "user/reg";
 	public static final String PATH_LOGIN_TEMPLATE = "user/login";
 	public static final String REDIRECT_TO_LOGIN_PAGE = "redirect:/user/login";
+	private static final String MSG_USER_LOGIN_INVALID = "invalid user/login";
 
 	private final UserService userService;
 
@@ -57,6 +60,24 @@ public class UserController {
 		}
 		return PATH_LOGIN_TEMPLATE;
 	}
+
+//	@PostMapping("user/login")
+//	public String login(@ModelAttribute("user") @Valid UserDTO userDTO,
+//						BindingResult bindingResult, HttpSession session, Model model) {
+//
+//		if (bindingResult.hasErrors()) {
+//			return "user/login";
+//		} else if (userService.existByUsername(userDTO.getUsername())) {
+//			Optional<User> optionalUser = Optional.ofNullable(userService.findByUsername(userDTO.getUsername()));
+//			User user = optionalUser.orElse(null);
+//			session.setAttribute("user", user);
+//		} else {
+//			model.addAttribute("msgerror", MSG_USER_LOGIN_INVALID);
+//			return "user/login";
+//		}
+//
+//		return PATH_INDEX_TEMPLATE;
+//	}
 
 	@GetMapping("/users")
 	public String showAllUsers(Model model, HttpSession session) {
