@@ -8,6 +8,7 @@ import com.example.diplomprojectmanagementprogramc51.mapper.UserMapper;
 import com.example.diplomprojectmanagementprogramc51.repository.RoleRepository;
 import com.example.diplomprojectmanagementprogramc51.repository.UserRepository;
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.core.userdetails.UserDetails;
@@ -21,18 +22,19 @@ import java.util.Optional;
 
 @Service
 @Slf4j
-@Transactional
 public class UserService implements UserDetailsService {
 
-
-    private final UserRepository userRepository;
-    private final RoleRepository roleRepository;
+    @Autowired
+    private UserRepository userRepository;
+    @Autowired
+    private RoleRepository roleRepository;
 
     public UserService(UserRepository userRepository,
                        RoleRepository roleRepository) {
         this.userRepository = userRepository;
         this.roleRepository = roleRepository;
     }
+
 
     public boolean registration(RegisteringUserDTO registeringUserDTO) {
         User user = UserMapper.mapFromRegisteringUser(registeringUserDTO);
@@ -44,7 +46,7 @@ public class UserService implements UserDetailsService {
             userRepository.save(user);
             return true;
 
-            //log.info("IN register - user: {} successfully registered");
+
         }
     }
 

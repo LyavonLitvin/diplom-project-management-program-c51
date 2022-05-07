@@ -30,19 +30,19 @@ public class User extends BasicEntity implements UserDetails {
 	private String firstName;
 	@Column(length = 40)
 	private String lastName;
-	@ManyToOne(targetEntity = Department.class)
-	@JoinColumn(name = "department_id", nullable = false)
-	private Department department;
+//	@ManyToOne(targetEntity = Department.class)
+//	@JoinColumn(name = "department_id", nullable = false)
+//	private Department department;
 
 	@ManyToMany(cascade = {CascadeType.MERGE})
 	@JoinTable(name="roles_users", joinColumns = @JoinColumn(name = "user_id"),
 			inverseJoinColumns = @JoinColumn(name = "role_id"))
 	private Set<Role> roles = new HashSet<>();
 
-	@ManyToMany(cascade = {CascadeType.MERGE})
-	@JoinTable(name="members", joinColumns = @JoinColumn(name = "user_id"),
-			inverseJoinColumns = @JoinColumn(name = "project_id"))
-	private Set<Project> projects = new HashSet<>();
+//	@ManyToMany(cascade = {CascadeType.MERGE})
+//	@JoinTable(name="members", joinColumns = @JoinColumn(name = "user_id"),
+//			inverseJoinColumns = @JoinColumn(name = "project_id"))
+//	private Set<Project> projects = new HashSet<>();
 
 
 	@Override
@@ -83,13 +83,13 @@ public class User extends BasicEntity implements UserDetails {
 		role.getUsers().remove(this);
 	}
 
-	public void addProject(Project project) {
-		projects.add(project);
-		project.getUsers().add(this);
-	}
-
-	public void removeProject(Project project) {
-		projects.remove(project);
-		project.getUsers().remove(this);
-	}
+//	public void addProject(Project project) {
+//		projects.add(project);
+//		project.getUsers().add(this);
+//	}
+//
+//	public void removeProject(Project project) {
+//		projects.remove(project);
+//		project.getUsers().remove(this);
+//	}
 }

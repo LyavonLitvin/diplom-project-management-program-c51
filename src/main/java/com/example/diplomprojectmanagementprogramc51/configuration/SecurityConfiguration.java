@@ -21,7 +21,7 @@ import org.springframework.security.provisioning.InMemoryUserDetailsManager;
 
 @Configuration
 @EnableWebSecurity
-@EnableGlobalMethodSecurity(prePostEnabled = true)
+//@EnableGlobalMethodSecurity(prePostEnabled = true)
 @PropertySource("classpath:security.properties")
 public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
 
@@ -32,7 +32,7 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
     private String[] permitAllPatterns;
 
     public SecurityConfiguration(UserService userService) {
-        this.userService = userService;
+        //this.userService = userService;
     }
 
 
@@ -45,16 +45,31 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
                 .anyRequest().authenticated()
                 .and()
                 .formLogin()
-                .loginPage("/user/login")
-                .usernameParameter("username").passwordParameter("password")
-                .failureUrl("/user/login?failed=true")
-                .and()
-                .logout()
-                .logoutUrl("/user/logout")
-                .logoutSuccessUrl("/user/login")
-                .invalidateHttpSession(true);
+                .loginPage("/user/login").permitAll();
+//                .usernameParameter("username").passwordParameter("password")
+//                .failureUrl("/user/login?failed=true")
+//                .and()
+//                .logout()
+//                .logoutUrl("/user/logout")
+//                .logoutSuccessUrl("/user/login")
+//                .invalidateHttpSession(true);
 
     }
+//        http
+//                .authorizeRequests()
+//                .antMatchers("/", "/user/reg", "/db/**").permitAll()
+//                .anyRequest().authenticated()
+//                .and()
+//                .formLogin()
+//                .loginPage("/user/login")
+//                .permitAll()
+//                .and()
+//                .logout()
+//                .permitAll();
+//
+//        http.csrf().disable();
+//        http.headers().frameOptions().disable();
+//    }
 
     @Bean
     public BCryptPasswordEncoder passwordEncoder() {
