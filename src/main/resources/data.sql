@@ -28,9 +28,9 @@ INSERT INTO statuses(creation_date_time, update_date_time, name) VALUE (NOW(),NO
 INSERT INTO users(creation_date_time, update_date_time, username, password, email, first_name, last_name, department_id) VALUE (NOW(), NOW(), 'user', 'dXNlcg==', 'user@gmail.com', 'user', 'user', 2);
 INSERT INTO users(creation_date_time, update_date_time, username, password, email, first_name, last_name, department_id) VALUE (NOW(), NOW(), 'user2', 'dXNlcg==', 'user2@gmail.com', 'user2', 'user2', 2);
 INSERT INTO users(creation_date_time, update_date_time, username, password, email, first_name, last_name, department_id) VALUE (NOW(), NOW(), 'admin', 'YWRtaW4=', 'admin@gmail.com', 'admin', 'admin', 1);
-INSERT INTO roles_users(creation_date_time, update_date_time, user_id, role_id) VALUE (NOW(),NOW(),1,2);
-INSERT INTO roles_users(creation_date_time, update_date_time, user_id, role_id) VALUE (NOW(),NOW(),1,2);
-INSERT INTO roles_users(creation_date_time, update_date_time, user_id, role_id) VALUE (NOW(),NOW(),2,1);
+INSERT INTO roles_users(creation_date_time, update_date_time, user_id, role_id) VALUE (NOW(),NOW(),2,2);
+INSERT INTO roles_users(creation_date_time, update_date_time, user_id, role_id) VALUE (NOW(),NOW(),3,3);
+INSERT INTO roles_users(creation_date_time, update_date_time, user_id, role_id) VALUE (NOW(),NOW(),4,1);
 INSERT INTO members(creation_date_time, update_date_time,user_id, project_id) VALUE (NOW(),NOW(),4,2);
 INSERT INTO members(creation_date_time, update_date_time,user_id, project_id) VALUE (NOW(),NOW(),3,2);
 INSERT INTO members(creation_date_time, update_date_time, user_id, project_id) VALUE (NOW(),NOW(),2,2);

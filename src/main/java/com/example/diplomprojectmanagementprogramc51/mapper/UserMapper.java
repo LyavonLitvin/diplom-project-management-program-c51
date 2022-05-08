@@ -2,12 +2,16 @@ package com.example.diplomprojectmanagementprogramc51.mapper;
 
 import com.example.diplomprojectmanagementprogramc51.dto.RegisteringUserDTO;
 import com.example.diplomprojectmanagementprogramc51.entity.User;
+import com.example.diplomprojectmanagementprogramc51.service.DepartmentService;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 
 import java.util.HashSet;
 
 public class UserMapper {
     private static final BCryptPasswordEncoder bCryptPasswordEncoder = new BCryptPasswordEncoder();
+    @Autowired
+    private static DepartmentService departmentService;
 
     public static User mapFromRegisteringUser(RegisteringUserDTO registeringUserDTO) {
         if (registeringUserDTO == null) {
@@ -20,6 +24,7 @@ public class UserMapper {
                     .email(registeringUserDTO.getEmail())
                     .roles(new HashSet<>())
                     .password(bCryptPasswordEncoder.encode(registeringUserDTO.getPassword()))
+//                    .department(departmentService.findByName(registeringUserDTO.getDepartment()).get())
                     .build();
         }
     }

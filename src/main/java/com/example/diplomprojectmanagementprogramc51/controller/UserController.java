@@ -1,9 +1,10 @@
 package com.example.diplomprojectmanagementprogramc51.controller;
 
 import com.example.diplomprojectmanagementprogramc51.dto.RegisteringUserDTO;
-import com.example.diplomprojectmanagementprogramc51.dto.UserDTO;
 import com.example.diplomprojectmanagementprogramc51.entity.User;
+import com.example.diplomprojectmanagementprogramc51.service.DepartmentService;
 import com.example.diplomprojectmanagementprogramc51.service.UserService;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
@@ -27,14 +28,19 @@ public class UserController {
 	public static final String REDIRECT_TO_LOGIN_PAGE = "redirect:/user/login";
 	private static final String MSG_USER_LOGIN_INVALID = "invalid user/login";
 
+	public static final String ATTRIBUTE_ROLES = "departments";
+
 	private final UserService userService;
+	@Autowired
+	private DepartmentService departmentService;
 
 	public UserController(UserService userService) {
 		this.userService = userService;
 	}
 
 	@GetMapping("/reg")
-	public String getRegistrationTemplate(@ModelAttribute(ATTRIBUTE_USER) RegisteringUserDTO registeringUserDTO) {
+	public String getRegistrationTemplate(@ModelAttribute(ATTRIBUTE_USER) RegisteringUserDTO registeringUserDTO, Model model) {
+		model.addAttribute(ATTRIBUTE_ROLES, departmentService.findAll());
 		return PATH_REG_TEMPLATE;
 	}
 
@@ -60,24 +66,6 @@ public class UserController {
 		}
 		return PATH_LOGIN_TEMPLATE;
 	}
-
-//	@PostMapping("user/login")
-//	public String login(@ModelAttribute("user") @Valid UserDTO userDTO,
-//						BindingResult bindingResult, HttpSession session, Model model) {
-//
-//		if (bindingResult.hasErrors()) {
-//			return "user/login";
-//		} else if (userService.existByUsername(userDTO.getUsername())) {
-//			Optional<User> optionalUser = Optional.ofNullable(userService.findByUsername(userDTO.getUsername()));
-//			User user = optionalUser.orElse(null);
-//			session.setAttribute("user", user);
-//		} else {
-//			model.addAttribute("msgerror", MSG_USER_LOGIN_INVALID);
-//			return "user/login";
-//		}
-//
-//		return PATH_INDEX_TEMPLATE;
-//	}
 
 	@GetMapping("/users")
 	public String showAllUsers(Model model, HttpSession session) {

@@ -42,4 +42,9 @@ public class RegisteringUserDTO {
     @Pattern(regexp = "^[a-zA-Z]*$",
             message = "Last name must contain only latin letters!")
     private String lastName;
+//    @NotBlank
+//    @NotEmpty
+    @Pattern(regexp = "/development|management/",
+            message = "Department must contain only latin letters!")
+    private String department;
 }

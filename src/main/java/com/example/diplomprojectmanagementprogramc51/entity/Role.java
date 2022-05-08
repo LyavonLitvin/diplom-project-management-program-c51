@@ -10,12 +10,12 @@ import javax.persistence.*;
 import java.util.HashSet;
 import java.util.Set;
 
+@Builder
 @Entity
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
-@Table
-@Builder
+@Table(name = "roles")
 @EqualsAndHashCode(callSuper = false, exclude = {"users"})
 public class Role extends BasicEntity implements GrantedAuthority {
 	@Column(unique = true, length = 250, nullable = false)

@@ -32,7 +32,7 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
     private String[] permitAllPatterns;
 
     public SecurityConfiguration(UserService userService) {
-        //this.userService = userService;
+        this.userService = userService;
     }
 
 
@@ -46,6 +46,7 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
                 .and()
                 .formLogin()
                 .loginPage("/user/login").permitAll()
+                .defaultSuccessUrl("/")
                 .usernameParameter("username").passwordParameter("password")
                 .failureUrl("/user/login?failed=true")
                 .and()
@@ -66,7 +67,7 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
         auth.inMemoryAuthentication()
                 .withUser("test")
                 .password(passwordEncoder().encode("test"))
-                .roles("USER");
+                .roles("ADMIN");
         //auth.userDetailsService(userService).passwordEncoder(passwordEncoder());
     }
 }

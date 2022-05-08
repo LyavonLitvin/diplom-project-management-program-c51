@@ -18,7 +18,10 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
+import java.util.Objects;
 import java.util.Optional;
+import java.util.Set;
+import java.util.stream.Collectors;
 
 @Service
 @Slf4j
@@ -45,7 +48,6 @@ public class UserService implements UserDetailsService {
             user.addRole(roleUser.get());
             userRepository.save(user);
             return true;
-
 
         }
     }
@@ -102,4 +104,18 @@ public class UserService implements UserDetailsService {
     public List<User> findAll(){
         return userRepository.findAll();
     }
+
+    public void assignRolesToUser(User user, Set<Role> roles) {
+        roles.removeIf(role -> user.getRoles().contains(role));
+        if (!roles.isEmpty()) {
+            Set<Role> foundRoles = roles.stream()
+                    .map(role -> roleRepository.findByName(role.getName()).orElse(null))
+                    .filter(Objects::nonNull)
+                    .collect(Collectors.toSet());
+            user.setRoles(foundRoles);
+            userRepository.saveAndFlush(user);
+        }
+    }
+
+
 }
