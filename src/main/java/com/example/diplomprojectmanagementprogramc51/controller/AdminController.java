@@ -4,7 +4,6 @@ import com.example.diplomprojectmanagementprogramc51.dto.CategoryDTO;
 import com.example.diplomprojectmanagementprogramc51.entity.Category;
 import com.example.diplomprojectmanagementprogramc51.entity.User;
 import com.example.diplomprojectmanagementprogramc51.service.*;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
@@ -31,12 +30,16 @@ public class AdminController {
     public static final String PATH_CATEGORY_CREATE_TEMPLATE = "admin/category/category-create";
     public static final String PATH_CATEGORY_DELETE_TEMPLATE = "admin/category/category-delete";
     public static final String PATH_CATEGORY_MANAGEMENT_TEMPLATE = "admin/category/category-management";
-    public static final String PATH_DEPARTMENT_CREATE_TEMPLATE = "admin/department/department-create";
-    public static final String PATH_DEPARTMENT_DELETE_TEMPLATE = "admin/department/department-delete";
-    public static final String PATH_DEPARTMENT_MANAGEMENT_TEMPLATE = "admin/department/department-management";
+    public static final String PATH_PRIORITY_CREATE_TEMPLATE = "admin/priority/priority-create";
+    public static final String PATH_PRIORITY_DELETE_TEMPLATE = "admin/priority/priority-delete";
+    public static final String PATH_PRIORITY_MANAGEMENT_TEMPLATE = "admin/priority/priority-management";
+    public static final String PATH_STATUS_CREATE_TEMPLATE = "admin/status/status-create";
+    public static final String PATH_STATUS_DELETE_TEMPLATE = "admin/status/status-delete";
+    public static final String PATH_STATUS_MANAGEMENT_TEMPLATE = "admin/status/status-management";
 //    public static final String REDIRECT_TO_ROLE_ASSIGNMENT_PAGE_URL = "redirect:/admin/role-management/role-assignment";
-    public static final String REDIRECT_TO_CATEGORY_MANAGEMENT_PAGE_URL = "redirect:/admin/category-management/category-create";
-//    public static final String REDIRECT_TO_ROLE_ASSIGNMENT_PAGE_URL = "redirect:/admin/category-management/category-create";
+    public static final String REDIRECT_ADMIN_CATEGORY_MANAGEMENT_CATEGORY_CREATE = "redirect:/admin/category/category-create";
+    public static final String REDIRECT_ADMIN_PRIORITY_MANAGEMENT_PRIORITY_CREATE = "redirect:/admin/priority/priority-create";
+    public static final String REDIRECT_ADMIN_STATUS_MANAGEMENT_STATUS_CREATE = "redirect:/admin/status/status-create";
 
     public static final String ATTRIBUTE_ROLES = "roles";
     public static final String ATTRIBUTE_ROLE = "role";
@@ -50,15 +53,17 @@ public class AdminController {
     public static final String OBJECT_ERROR_GLOBAL = "global";
     public final UserService userService;
     public final RoleService roleService;
-
     public final CategoryService categoryService;
-    public final DepartmentService departmentService;
+    public final PriorityService priorityService;
+    public final StatusService statusService;
 
-    public AdminController(UserService userService, RoleService roleService, DepartmentService departmentService, PriorityService priorityService, StatusService statusService) {
+
+    public AdminController(UserService userService, RoleService roleService, CategoryService categoryService, PriorityService priorityService, StatusService statusService) {
         this.userService = userService;
         this.roleService = roleService;
-        this.departmentService = departmentService;
         this.categoryService = categoryService;
+        this.priorityService = priorityService;
+        this.statusService = statusService;
     }
 
     @GetMapping
@@ -109,7 +114,7 @@ public class AdminController {
         } else {
             boolean isRegistered = categoryService.save(categoryDTO);
             if (isRegistered) {
-                return REDIRECT_TO_CATEGORY_MANAGEMENT_PAGE_URL;
+                return REDIRECT_ADMIN_CATEGORY_MANAGEMENT_CATEGORY_CREATE;
             } else {
                 model.addAttribute(ATTRIBUTE_ERROR, "Already exists!");
                 return PATH_CATEGORY_CREATE_TEMPLATE;
@@ -129,7 +134,7 @@ public class AdminController {
         } else {
             boolean isRegistered = categoryService.delete(categoryDTO);
             if (isRegistered) {
-                return REDIRECT_TO_CATEGORY_MANAGEMENT_PAGE_URL;
+                return REDIRECT_ADMIN_CATEGORY_MANAGEMENT_CATEGORY_CREATE;
             } else {
                 model.addAttribute(ATTRIBUTE_ERROR, "Already exists!");
                 return PATH_CATEGORY_CREATE_TEMPLATE;

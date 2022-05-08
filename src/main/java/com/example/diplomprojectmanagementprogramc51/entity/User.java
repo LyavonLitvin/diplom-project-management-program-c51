@@ -39,10 +39,10 @@ public class User extends BasicEntity implements UserDetails {
 			inverseJoinColumns = @JoinColumn(name = "role_id"))
 	private Set<Role> roles = new HashSet<>();
 
-//	@ManyToMany(cascade = {CascadeType.MERGE})
-//	@JoinTable(name="members", joinColumns = @JoinColumn(name = "user_id"),
-//			inverseJoinColumns = @JoinColumn(name = "project_id"))
-//	private Set<Project> projects = new HashSet<>();
+	@ManyToMany(cascade = {CascadeType.MERGE})
+	@JoinTable(name="members", joinColumns = @JoinColumn(name = "user_id"),
+			inverseJoinColumns = @JoinColumn(name = "project_id"))
+	private Set<Project> projects = new HashSet<>();
 
 
 	@Override

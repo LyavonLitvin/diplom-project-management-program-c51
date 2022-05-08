@@ -2,7 +2,6 @@ package com.example.diplomprojectmanagementprogramc51.mapper;
 
 import com.example.diplomprojectmanagementprogramc51.dto.RegisteringUserDTO;
 import com.example.diplomprojectmanagementprogramc51.entity.User;
-import com.example.diplomprojectmanagementprogramc51.service.DepartmentService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 
