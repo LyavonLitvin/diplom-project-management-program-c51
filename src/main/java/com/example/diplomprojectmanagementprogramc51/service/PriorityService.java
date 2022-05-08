@@ -50,7 +50,7 @@ public class PriorityService {
         return priorityRepository.existsByName(priority.getName());
     }
 
-    public List<Priority> findAllByName(){
+    public List<Priority> findAll(){
         return priorityRepository.findAll();
     }
 

@@ -51,7 +51,7 @@ public class StatusService {
         return statusRepository.existsByName(status.getName());
     }
 
-    public List<Status> findAllByName(){
+    public List<Status> findAll(){
         return statusRepository.findAll();
     }
 

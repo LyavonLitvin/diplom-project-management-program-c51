@@ -1,7 +1,10 @@
 package com.example.diplomprojectmanagementprogramc51.service;
 
 
+import com.example.diplomprojectmanagementprogramc51.dto.CategoryDTO;
 import com.example.diplomprojectmanagementprogramc51.entity.Category;
+import com.example.diplomprojectmanagementprogramc51.mapper.CategoryMapper;
+import com.example.diplomprojectmanagementprogramc51.mapper.CategoryMapperImpl;
 import com.example.diplomprojectmanagementprogramc51.repository.CategoryRepository;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -19,13 +22,16 @@ import java.util.Optional;
 public class CategoryService{
     @Autowired
     private CategoryRepository categoryRepository;
+    @Autowired
+    private CategoryMapper categoryMapper;
 
     public CategoryService(CategoryRepository categoryRepository) {
         this.categoryRepository = categoryRepository;
     }
 
 
-    public boolean save(Category category){
+    public boolean save(CategoryDTO categoryDTO){
+        Category category = categoryMapper.categoryDTOToCategory(categoryDTO);
         if(existsByName(category)){
             return false;
         }
@@ -35,7 +41,8 @@ public class CategoryService{
         }
     }
 
-    public boolean delete(Category category){
+    public boolean delete(CategoryDTO categoryDTO){
+        Category category = categoryMapper.categoryDTOToCategory(categoryDTO);
         if(existsByName(category)){
             return false;
         }
@@ -45,7 +52,8 @@ public class CategoryService{
         }
     }
 
-    public boolean update(Category category){
+    public boolean update(CategoryDTO categoryDTO){
+        Category category = categoryMapper.categoryDTOToCategory(categoryDTO);
         Category categoryCheck = categoryRepository.saveAndFlush(category);
         return  category.equals(categoryCheck);
     }
@@ -54,7 +62,7 @@ public class CategoryService{
         return categoryRepository.existsByName(category.getName());
     }
 
-    public List<Category> findAllByName(){
+    public List<Category> findAll(){
         return categoryRepository.findAll();
     }
 

@@ -28,7 +28,7 @@ public class UserController {
 	public static final String REDIRECT_TO_LOGIN_PAGE = "redirect:/user/login";
 	private static final String MSG_USER_LOGIN_INVALID = "invalid user/login";
 
-	public static final String ATTRIBUTE_ROLES = "departments";
+	public static final String ATTRIBUTE_DEPARTMENTS = "departments";
 
 	private final UserService userService;
 	@Autowired
@@ -40,7 +40,7 @@ public class UserController {
 
 	@GetMapping("/reg")
 	public String getRegistrationTemplate(@ModelAttribute(ATTRIBUTE_USER) RegisteringUserDTO registeringUserDTO, Model model) {
-		model.addAttribute(ATTRIBUTE_ROLES, departmentService.findAll());
+		model.addAttribute(ATTRIBUTE_DEPARTMENTS, departmentService.findAll());
 		return PATH_REG_TEMPLATE;
 	}
 
