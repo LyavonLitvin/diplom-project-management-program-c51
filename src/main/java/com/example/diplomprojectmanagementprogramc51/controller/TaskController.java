@@ -24,6 +24,9 @@ public class TaskController {
 
     public static final String ATTRIBUTE_TASK = "task";
     public static final String ATTRIBUTE_TASKS = "tasks";
+    public static final String ATTRIBUTE_MY_TASKS = "myTasks";
+    public static final String PATH_TASKS_TEMPLATE = "task/tasks";
+    public static final String PATH_MY_TASKS_TEMPLATE = "task/my-tasks";
     public static final String PATH_TASK_CREATE_TEMPLATE = "task/create";
     public static final String PATH_TASK_DELETE_TEMPLATE = "task/delete";
     public static final String PATH_TASK_EDIT_TEMPLATE = "task/edit";
@@ -58,21 +61,21 @@ public class TaskController {
     }
 
     @GetMapping("/tasks")
-    public String showAllUsers(Model model, HttpSession session) {
+    public String showAllTasks(Model model, HttpSession session) {
         List<TaskDTO> tasks = TaskMapper.mapFromTaskDTOListFromTasks(taskService.findAllByName());
         model.addAttribute(ATTRIBUTE_TASKS,
                 tasks);
 
-        return "task/tasks";
+        return PATH_TASKS_TEMPLATE;
     }
 
-    @GetMapping("/tasks")
-    public String showAllUsers(Model model, HttpSession session) {
-        List<TaskDTO> tasks = TaskMapper.mapFromTaskDTOListFromTasks(taskService.findAllByName());
-        model.addAttribute(ATTRIBUTE_TASKS,
-                tasks);
+    @GetMapping("/my-tasks")
+    public String showMyTasks(Model model, HttpSession session) {
+        List<TaskDTO> myTasks = TaskMapper.mapFromTaskDTOListFromTasks(taskService.findAllByName());
+        model.addAttribute(ATTRIBUTE_MY_TASKS,
+                myTasks);
 
-        return "task/tasks";
+        return PATH_MY_TASKS_TEMPLATE;
     }
 
     @GetMapping("/{id}")
