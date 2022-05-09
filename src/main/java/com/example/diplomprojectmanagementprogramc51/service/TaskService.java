@@ -17,16 +17,16 @@ public class TaskService {
     @Autowired
     private TaskRepository taskRepository;
 
-    private final TaskMapper taskMapper;
 
 
-    public TaskService(TaskRepository taskRepository, TaskMapper taskMapper) {
+
+    public TaskService(TaskRepository taskRepository) {
         this.taskRepository = taskRepository;
-        this.taskMapper = taskMapper;
+
     }
 
     public boolean save(TaskDTO taskDTO){
-        Task task = taskMapper.mapFromTaskDtoToTask(taskDTO);
+        Task task = TaskMapper.mapFromTaskDtoToTask(taskDTO);
         if(existsByName(task)){
             return false;
         }
@@ -36,7 +36,8 @@ public class TaskService {
         }
     }
 
-    public boolean delete(Task task){
+    public boolean delete(TaskDTO taskDTO){
+        Task task = TaskMapper.mapFromTaskDtoToTask(taskDTO);
         if(existsByName(task)){
             return false;
         }
@@ -46,7 +47,8 @@ public class TaskService {
         }
     }
 
-    public boolean update(Task task){
+    public boolean update(TaskDTO taskDTO){
+        Task task = TaskMapper.mapFromTaskDtoToTask(taskDTO);
         Task taskCheck = taskRepository.saveAndFlush(task);
         return  task.equals(taskCheck);
     }

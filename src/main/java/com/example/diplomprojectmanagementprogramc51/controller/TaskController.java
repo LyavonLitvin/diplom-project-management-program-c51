@@ -2,9 +2,9 @@ package com.example.diplomprojectmanagementprogramc51.controller;
 
 
 import com.example.diplomprojectmanagementprogramc51.dto.TaskDTO;
-import com.example.diplomprojectmanagementprogramc51.entity.User;
+import com.example.diplomprojectmanagementprogramc51.entity.Task;
+import com.example.diplomprojectmanagementprogramc51.mapper.TaskMapper;
 import com.example.diplomprojectmanagementprogramc51.service.TaskService;
-import com.example.diplomprojectmanagementprogramc51.service.UserService;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
@@ -13,6 +13,7 @@ import org.springframework.web.bind.annotation.*;
 import javax.servlet.http.HttpSession;
 import javax.validation.Valid;
 
+import java.util.List;
 import java.util.Optional;
 
 import static com.example.diplomprojectmanagementprogramc51.controller.ExceptionHandlerController.ATTRIBUTE_ERROR;
@@ -24,11 +25,10 @@ public class TaskController {
     public static final String ATTRIBUTE_TASK = "task";
     public static final String ATTRIBUTE_TASKS = "tasks";
     public static final String PATH_TASK_CREATE_TEMPLATE = "task/create";
-    public static final String PATH_TASK_DELETE_TEMPLATE = "user/delete";
-    public static final String PATH_TASK_EDIT_TEMPLATE = "user/edit";
+    public static final String PATH_TASK_DELETE_TEMPLATE = "task/delete";
+    public static final String PATH_TASK_EDIT_TEMPLATE = "task/edit";
     public static final String REDIRECT_TO_CREATE_PAGE = "redirect:/task/create";
     public static final String REDIRECT_TO_EDIT_PAGE = "redirect:/task/edit";
-    private static final String MSG_USER_LOGIN_INVALID = "invalid user/login";
 
 
     private final TaskService taskService;
@@ -59,15 +59,26 @@ public class TaskController {
 
     @GetMapping("/tasks")
     public String showAllUsers(Model model, HttpSession session) {
-        model.addAttribute(ATTRIBUTE_TASKS, taskService.findAll());
+        List<TaskDTO> tasks = TaskMapper.mapFromTaskDTOListFromTasks(taskService.findAllByName());
+        model.addAttribute(ATTRIBUTE_TASKS,
+                tasks);
+
+        return "task/tasks";
+    }
+
+    @GetMapping("/tasks")
+    public String showAllUsers(Model model, HttpSession session) {
+        List<TaskDTO> tasks = TaskMapper.mapFromTaskDTOListFromTasks(taskService.findAllByName());
+        model.addAttribute(ATTRIBUTE_TASKS,
+                tasks);
 
         return "task/tasks";
     }
 
     @GetMapping("/{id}")
     public String showById(@PathVariable("id") long id, Model model) {
-        Optional<User> optionalUser = userService.findById(id);
-        User user = optionalUser.orElse(null);
+        Optional<TaskDTO> optionalTask = Optional.of(TaskMapper.mapFromTaskToTaskDto(taskService.findById(id).get()));
+        TaskDTO task = optionalTask.orElse(null);
         model.addAttribute(ATTRIBUTE_TASK, task);
 
         return "task/task";

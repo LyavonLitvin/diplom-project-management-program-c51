@@ -7,7 +7,8 @@ import com.example.diplomprojectmanagementprogramc51.service.PriorityService;
 import com.example.diplomprojectmanagementprogramc51.service.StatusService;
 import com.example.diplomprojectmanagementprogramc51.service.UserService;
 
-import java.util.HashSet;
+import java.util.List;
+import java.util.stream.Collectors;
 
 public class TaskMapper {
     private static UserService userService;
@@ -22,7 +23,7 @@ public class TaskMapper {
         this.priorityService = priorityService;
     }
 
-    public Task mapFromTaskDtoToTask(TaskDTO taskDTO) {
+    public static Task mapFromTaskDtoToTask(TaskDTO taskDTO) {
         if (taskDTO == null) {
             return null;
         } else {
@@ -38,7 +39,7 @@ public class TaskMapper {
         }
     }
 
-    public TaskDTO mapFromTaskToTaskDto(Task task) {
+    public static TaskDTO mapFromTaskToTaskDto(Task task) {
         TaskDTO taskDTO = new TaskDTO();
         taskDTO.setCreatorName(task.getCreator().getUsername());
         taskDTO.setExecutorName(task.getExecutor().getUsername());
@@ -50,4 +51,13 @@ public class TaskMapper {
         return taskDTO;
     }
 
+    public static List<TaskDTO> mapFromTaskDTOListFromTasks(List<Task> taskList) {
+        if (taskList == null || taskList.isEmpty()) {
+            return null;
+        } else {
+            return taskList.stream()
+                    .map(TaskMapper::mapFromTaskToTaskDto)
+                    .collect(Collectors.toList());
+        }
+    }
 }
