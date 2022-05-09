@@ -1,7 +1,9 @@
 package com.example.diplomprojectmanagementprogramc51.controller;
 
-import com.example.diplomprojectmanagementprogramc51.dto.RegisteringUserDTO;
+
+import com.example.diplomprojectmanagementprogramc51.dto.TaskDTO;
 import com.example.diplomprojectmanagementprogramc51.entity.User;
+import com.example.diplomprojectmanagementprogramc51.service.TaskService;
 import com.example.diplomprojectmanagementprogramc51.service.UserService;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -20,6 +22,7 @@ import static com.example.diplomprojectmanagementprogramc51.controller.Exception
 public class TaskController {
 
     public static final String ATTRIBUTE_TASK = "task";
+    public static final String ATTRIBUTE_TASKS = "tasks";
     public static final String PATH_TASK_CREATE_TEMPLATE = "task/create";
     public static final String PATH_TASK_DELETE_TEMPLATE = "user/delete";
     public static final String PATH_TASK_EDIT_TEMPLATE = "user/edit";
@@ -27,25 +30,24 @@ public class TaskController {
     public static final String REDIRECT_TO_EDIT_PAGE = "redirect:/task/edit";
     private static final String MSG_USER_LOGIN_INVALID = "invalid user/login";
 
-    public static final String ATTRIBUTE_DEPARTMENTS = "departments";
 
-    private final UserService userService;
+    private final TaskService taskService;
 
-    public TaskController(UserService userService) {
-        this.userService = userService;
+    public TaskController(TaskService tasService) {
+        this.taskService = tasService;
     }
 
-    @GetMapping("/reg")
-    public String getRegistrationTemplate(@ModelAttribute(ATTRIBUTE_TASK) RegisteringUserDTO registeringUserDTO) {
+    @GetMapping("/create")
+    public String getRegistrationTemplate(@ModelAttribute(ATTRIBUTE_TASK) TaskDTO registeringUserDTO) {
         return PATH_TASK_CREATE_TEMPLATE;
     }
 
-    @PostMapping("/reg")
-    public String signup(@ModelAttribute(ATTRIBUTE_TASK) @Valid RegisteringUserDTO registeringUserDTO, BindingResult bindingResult, Model model) {
+    @PostMapping("/create")
+    public String signup(@ModelAttribute(ATTRIBUTE_TASK) @Valid TaskDTO taskDTO, BindingResult bindingResult, Model model) {
         if (bindingResult.hasErrors()) {
             return PATH_TASK_CREATE_TEMPLATE;
         } else {
-            boolean isRegistered = userService.registration(registeringUserDTO);
+            boolean isRegistered = taskService.save(taskDTO);
             if (isRegistered) {
                 return REDIRECT_TO_CREATE_PAGE;
             } else {
@@ -55,20 +57,20 @@ public class TaskController {
         }
     }
 
-    @GetMapping("/users")
+    @GetMapping("/tasks")
     public String showAllUsers(Model model, HttpSession session) {
-        model.addAttribute("users", userService.findAll());
+        model.addAttribute(ATTRIBUTE_TASKS, taskService.findAll());
 
-        return "user/users";
+        return "task/tasks";
     }
 
     @GetMapping("/{id}")
     public String showById(@PathVariable("id") long id, Model model) {
         Optional<User> optionalUser = userService.findById(id);
         User user = optionalUser.orElse(null);
-        model.addAttribute("user", user);
+        model.addAttribute(ATTRIBUTE_TASK, task);
 
-        return "user/user";
+        return "task/task";
     }
 }
 

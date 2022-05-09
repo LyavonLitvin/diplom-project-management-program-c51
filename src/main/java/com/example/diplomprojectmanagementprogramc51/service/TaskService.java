@@ -1,12 +1,12 @@
 package com.example.diplomprojectmanagementprogramc51.service;
 
-import com.example.diplomprojectmanagementprogramc51.entity.Category;
+import com.example.diplomprojectmanagementprogramc51.dto.TaskDTO;
 import com.example.diplomprojectmanagementprogramc51.entity.Task;
+import com.example.diplomprojectmanagementprogramc51.mapper.TaskMapper;
 import com.example.diplomprojectmanagementprogramc51.repository.TaskRepository;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
 import java.util.Optional;
@@ -17,12 +17,16 @@ public class TaskService {
     @Autowired
     private TaskRepository taskRepository;
 
+    private final TaskMapper taskMapper;
 
-    public TaskService(TaskRepository taskRepository) {
+
+    public TaskService(TaskRepository taskRepository, TaskMapper taskMapper) {
         this.taskRepository = taskRepository;
+        this.taskMapper = taskMapper;
     }
 
-    public boolean save(Task task){
+    public boolean save(TaskDTO taskDTO){
+        Task task = taskMapper.mapFromTaskDtoToTask(taskDTO);
         if(existsByName(task)){
             return false;
         }

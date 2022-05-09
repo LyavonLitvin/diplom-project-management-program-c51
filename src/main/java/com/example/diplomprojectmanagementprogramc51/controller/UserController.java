@@ -3,7 +3,6 @@ package com.example.diplomprojectmanagementprogramc51.controller;
 import com.example.diplomprojectmanagementprogramc51.dto.RegisteringUserDTO;
 import com.example.diplomprojectmanagementprogramc51.entity.User;
 import com.example.diplomprojectmanagementprogramc51.service.UserService;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
@@ -25,9 +24,7 @@ public class UserController {
 	public static final String PATH_REG_TEMPLATE = "user/reg";
 	public static final String PATH_LOGIN_TEMPLATE = "user/login";
 	public static final String REDIRECT_TO_LOGIN_PAGE = "redirect:/user/login";
-	private static final String MSG_USER_LOGIN_INVALID = "invalid user/login";
 
-	public static final String ATTRIBUTE_DEPARTMENTS = "departments";
 
 	private final UserService userService;
 
