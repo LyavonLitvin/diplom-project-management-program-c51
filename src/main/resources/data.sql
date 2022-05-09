@@ -23,9 +23,9 @@ INSERT INTO statuses(creation_date_time, update_date_time, name) VALUE (NOW(),NO
 
 
 -- # USERS
-INSERT INTO users(creation_date_time, update_date_time, username, password, email, first_name, last_name) VALUE (NOW(), NOW(), 'user', 'dXNlcg==', 'user@gmail.com', 'user', 'user');
-INSERT INTO users(creation_date_time, update_date_time, username, password, email, first_name, last_name) VALUE (NOW(), NOW(), 'user2', 'dXNlcg==', 'user2@gmail.com', 'user2', 'user2');
-INSERT INTO users(creation_date_time, update_date_time, username, password, email, first_name, last_name) VALUE (NOW(), NOW(), 'admin', 'YWRtaW4=', 'admin@gmail.com', 'admin', 'admin');
+INSERT INTO users(creation_date_time, update_date_time, username, password, email, first_name, last_name) VALUE (NOW(), NOW(), 'user', '$2a$12$Z8fc2VBxRef3kZXaEGzF0OzVsWVBhOskDfmqsBcY.gKwLQCimPyMu', 'user@gmail.com', 'user', 'user');
+INSERT INTO users(creation_date_time, update_date_time, username, password, email, first_name, last_name) VALUE (NOW(), NOW(), 'user2', '$2a$12$Z8fc2VBxRef3kZXaEGzF0OzVsWVBhOskDfmqsBcY.gKwLQCimPyMu', 'user2@gmail.com', 'user2', 'user2');
+INSERT INTO users(creation_date_time, update_date_time, username, password, email, first_name, last_name) VALUE (NOW(), NOW(), 'admin', '$2a$12$JEBhgLLHxE6vbpAp6RKnMOSJzqSVNUF3fV6fNNnvNEkDu0XeDBi42', 'admin@gmail.com', 'admin', 'admin');
 INSERT INTO roles_users(creation_date_time, update_date_time, user_id, role_id) VALUE (NOW(),NOW(),2,2);
 INSERT INTO roles_users(creation_date_time, update_date_time, user_id, role_id) VALUE (NOW(),NOW(),3,3);
 INSERT INTO roles_users(creation_date_time, update_date_time, user_id, role_id) VALUE (NOW(),NOW(),1,1);

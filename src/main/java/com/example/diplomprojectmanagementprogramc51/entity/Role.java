@@ -18,10 +18,13 @@ import java.util.Set;
 @NoArgsConstructor
 @AllArgsConstructor
 @Table(name = "roles")
+
 @EqualsAndHashCode(callSuper = false, exclude = {"users"})
 public class Role extends BasicEntity implements GrantedAuthority {
+	@ToString.Include
 	@Column(unique = true, length = 250, nullable = false)
 	private String name;
+	@ToString.Exclude
 	@ManyToMany(mappedBy = "roles")
 	private Set<User> users = new HashSet<>();
 

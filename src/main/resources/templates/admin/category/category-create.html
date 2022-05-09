@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en" xmlns:th="http://thymeleaf.org">
+<html lang="en" xmlns:th="http://thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
 <head>
     <meta charset="UTF-8">
     <title>Category create</title>
@@ -16,7 +16,7 @@
                 <div class="navbar-nav">
                     <a class="nav-link" href="#">PMP</a>
                     <a class="nav-link" href="/">Home</a>
-                    <a href="/admin/category/category-management">Category management</a>
+                    <a class="nav-link" href="/admin/category-management">Category management</a>
                 </div>
             </div>
         </div>
@@ -25,7 +25,7 @@
 <div align="center">
     <form th:action="@{/admin/category/category-create}" th:object="${category}" method="post">
         <label th:for="name">Category name:</label>
-        <input type="name" id="name" th:field="*{name}"/>
+        <input type="text" id="name" th:field="*{name}"/>
         <p th:if="${#fields.hasErrors('name')}" th:errors="*{name}">Incorrect name</p>
         <br><br>
         <input type="submit">

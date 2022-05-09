@@ -4,12 +4,11 @@ package com.example.diplomprojectmanagementprogramc51.service;
 import com.example.diplomprojectmanagementprogramc51.dto.CategoryDTO;
 import com.example.diplomprojectmanagementprogramc51.entity.Category;
 import com.example.diplomprojectmanagementprogramc51.mapper.CategoryMapper;
-import com.example.diplomprojectmanagementprogramc51.mapper.CategoryMapperImpl;
 import com.example.diplomprojectmanagementprogramc51.repository.CategoryRepository;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-import org.springframework.transaction.annotation.Transactional;
+
 
 import java.util.List;
 import java.util.Optional;
@@ -44,11 +43,11 @@ public class CategoryService{
     public boolean delete(CategoryDTO categoryDTO){
         Category category = categoryMapper.categoryDTOToCategory(categoryDTO);
         if(existsByName(category)){
-            return false;
-        }
-        else {
             categoryRepository.delete(category);
             return true;
+        }
+        else {
+            return false;
         }
     }
 

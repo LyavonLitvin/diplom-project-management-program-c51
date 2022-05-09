@@ -35,7 +35,7 @@ public class User extends BasicEntity implements UserDetails {
 	private String lastName;
 
 
-	@ManyToMany(cascade = {CascadeType.MERGE})
+	@ManyToMany(cascade = CascadeType.PERSIST, fetch = FetchType.EAGER)
 	@JoinTable(name="roles_users", joinColumns = @JoinColumn(name = "user_id"),
 			inverseJoinColumns = @JoinColumn(name = "role_id"))
 	private Set<Role> roles = new HashSet<>();

@@ -3,6 +3,7 @@ package com.example.diplomprojectmanagementprogramc51.repository;
 import com.example.diplomprojectmanagementprogramc51.entity.Priority;
 import org.springframework.data.jpa.repository.JpaRepository;
 
+import java.util.List;
 import java.util.Optional;
 
 
