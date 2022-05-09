@@ -2,6 +2,7 @@ package com.example.diplomprojectmanagementprogramc51.controller;
 
 import com.example.diplomprojectmanagementprogramc51.dto.CategoryDTO;
 import com.example.diplomprojectmanagementprogramc51.dto.PriorityDTO;
+import com.example.diplomprojectmanagementprogramc51.dto.StatusDTO;
 import com.example.diplomprojectmanagementprogramc51.entity.Category;
 import com.example.diplomprojectmanagementprogramc51.entity.Priority;
 import com.example.diplomprojectmanagementprogramc51.entity.User;
@@ -29,15 +30,15 @@ public class AdminController {
     public static final String PATH_ADMIN_PANEL_TEMPLATE = "admin/admin-panel";
     public static final String PATH_ROLE_MANAGEMENT_TEMPLATE = "admin/role/role-management";
     public static final String PATH_ROLE_ASSIGNMENT_TEMPLATE = "admin/role/role-assignment";
-    public static final String PATH_CATEGORY_CREATE_TEMPLATE = "admin/category/category-create";
-    public static final String PATH_CATEGORY_DELETE_TEMPLATE = "admin/category/category-delete";
-    public static final String PATH_CATEGORY_MANAGEMENT_TEMPLATE = "admin/category/category-management";
-    public static final String PATH_PRIORITY_CREATE_TEMPLATE = "admin/priority/priority-create";
-    public static final String PATH_PRIORITY_DELETE_TEMPLATE = "admin/priority/priority-delete";
-    public static final String PATH_PRIORITY_MANAGEMENT_TEMPLATE = "admin/priority/priority-management";
-    public static final String PATH_STATUS_CREATE_TEMPLATE = "admin/status/status-create";
-    public static final String PATH_STATUS_DELETE_TEMPLATE = "admin/status/status-delete";
-    public static final String PATH_STATUS_MANAGEMENT_TEMPLATE = "admin/status/status-management";
+    public static final String PATH_CATEGORY_CREATE_TEMPLATE = "admin/category/create";
+    public static final String PATH_CATEGORY_DELETE_TEMPLATE = "admin/category/delete";
+    public static final String PATH_CATEGORY_MANAGEMENT_TEMPLATE = "admin/category/management";
+    public static final String PATH_PRIORITY_CREATE_TEMPLATE = "admin/priority/create";
+    public static final String PATH_PRIORITY_DELETE_TEMPLATE = "admin/priority/delete";
+    public static final String PATH_PRIORITY_MANAGEMENT_TEMPLATE = "admin/priority/management";
+    public static final String PATH_STATUS_CREATE_TEMPLATE = "admin/status/create";
+    public static final String PATH_STATUS_DELETE_TEMPLATE = "admin/status/delete";
+    public static final String PATH_STATUS_MANAGEMENT_TEMPLATE = "admin/status/management";
     //    public static final String REDIRECT_TO_ROLE_ASSIGNMENT_PAGE_URL = "redirect:/admin/role-assignment";
     public static final String REDIRECT_ADMIN_CATEGORY_MANAGEMENT_CATEGORY = "redirect:/admin/category-management";
     public static final String REDIRECT_ADMIN_PRIORITY_MANAGEMENT_PRIORITY = "redirect:/admin/priority-management";
@@ -49,6 +50,8 @@ public class AdminController {
     public static final String ATTRIBUTE_CATEGORY = "category";
     public static final String ATTRIBUTE_PRIORITY = "priority";
     public static final String ATTRIBUTE_PRIORITIES = "priorities";
+    public static final String ATTRIBUTE_STATUS = "status";
+    public static final String ATTRIBUTE_STATUSES = "statuses";
     public static final String ERROR_USER_WITH_EMAIL_NOT_EXIST = "User with this email does not exist!";
     public static final String OBJECT_ERROR_GLOBAL = "global";
     public final UserService userService;
@@ -145,16 +148,16 @@ public class AdminController {
     @GetMapping("/priority-management")
     public String getPathPriorityManagementTemplate(Model model) {
         model.addAttribute(ATTRIBUTE_PRIORITIES, priorityService.findAll());
-        return PATH_CATEGORY_MANAGEMENT_TEMPLATE;
+        return PATH_PRIORITY_MANAGEMENT_TEMPLATE;
     }
 
     @GetMapping("/priority/priority-create")
-    public String getCategoryCreateTemplate(@ModelAttribute(ATTRIBUTE_PRIORITY) PriorityDTO priorityDTO) {
+    public String getPriorityCreateTemplate(@ModelAttribute(ATTRIBUTE_PRIORITY) PriorityDTO priorityDTO) {
         return PATH_PRIORITY_CREATE_TEMPLATE;
     }
 
     @PostMapping("/priority/priority-create")
-    public String assignNewCategory(@ModelAttribute(ATTRIBUTE_PRIORITY) @Valid PriorityDTO priorityDTO, BindingResult bindingResult, Model model) {
+    public String assignNewPriority(@ModelAttribute(ATTRIBUTE_PRIORITY) @Valid PriorityDTO priorityDTO, BindingResult bindingResult, Model model) {
         if (bindingResult.hasErrors()) {
             return PATH_PRIORITY_CREATE_TEMPLATE;
         } else {
@@ -169,12 +172,12 @@ public class AdminController {
     }
 
     @GetMapping("/priority/priority-delete")
-    public String getPathCategoryDeleteTemplate(@ModelAttribute(ATTRIBUTE_PRIORITY) PriorityDTO priorityDTO) {
+    public String getPathPriorityDeleteTemplate(@ModelAttribute(ATTRIBUTE_PRIORITY) PriorityDTO priorityDTO) {
         return PATH_PRIORITY_DELETE_TEMPLATE;
     }
 
     @PostMapping("/priority/priority-delete")
-    public String deletingCategory(@ModelAttribute(ATTRIBUTE_PRIORITY) @Valid PriorityDTO priorityDTO, BindingResult bindingResult, Model model) {
+    public String deletingPriority(@ModelAttribute(ATTRIBUTE_PRIORITY) @Valid PriorityDTO priorityDTO, BindingResult bindingResult, Model model) {
         if (bindingResult.hasErrors()) {
             model.addAttribute(ATTRIBUTE_ERROR, "Something gone wrong!");
         } else {
@@ -188,5 +191,49 @@ public class AdminController {
         return PATH_PRIORITY_DELETE_TEMPLATE;
     }
 
+    @GetMapping("/status-management")
+    public String getPathStatusManagementTemplate(Model model) {
+        model.addAttribute(ATTRIBUTE_STATUSES, statusService.findAll());
+        return PATH_STATUS_MANAGEMENT_TEMPLATE;
+    }
 
+    @GetMapping("/status/status-create")
+    public String getStatusCreateTemplate(@ModelAttribute(ATTRIBUTE_STATUS) PriorityDTO statusDTO) {
+        return PATH_STATUS_CREATE_TEMPLATE;
+    }
+
+    @PostMapping("/status/status-create")
+    public String assignNewStatus(@ModelAttribute(ATTRIBUTE_STATUS) @Valid StatusDTO statusDTO, BindingResult bindingResult, Model model) {
+        if (bindingResult.hasErrors()) {
+            return PATH_STATUS_CREATE_TEMPLATE;
+        } else {
+            boolean isRegistered = statusService.save(statusDTO);
+            if (isRegistered) {
+                return REDIRECT_ADMIN_STATUS_MANAGEMENT_STATUS;
+            } else {
+                model.addAttribute(ATTRIBUTE_ERROR, "Already exists!");
+                return PATH_STATUS_CREATE_TEMPLATE;
+            }
+        }
+    }
+
+    @GetMapping("/status/status-delete")
+    public String getPathStatusDeleteTemplate(@ModelAttribute(ATTRIBUTE_STATUS) PriorityDTO statusDTO) {
+        return PATH_STATUS_DELETE_TEMPLATE;
+    }
+
+    @PostMapping("/status/status-delete")
+    public String deletingStatus(@ModelAttribute(ATTRIBUTE_STATUS) @Valid StatusDTO statusDTO, BindingResult bindingResult, Model model) {
+        if (bindingResult.hasErrors()) {
+            model.addAttribute(ATTRIBUTE_ERROR, "Something gone wrong!");
+        } else {
+            boolean isDeleted = statusService.delete(statusDTO);
+            if (isDeleted) {
+                model.addAttribute(ATTRIBUTE_ERROR, "Priority has deleted successful!");
+            } else {
+                model.addAttribute(ATTRIBUTE_ERROR, "Priority hasn't deleted successful!");
+            }
+        }
+        return PATH_STATUS_DELETE_TEMPLATE;
+    }
 }

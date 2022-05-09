@@ -16,8 +16,8 @@
                 <div class="navbar-nav">
                     <a class="nav-link" href="#">PMP</a>
                     <a class="nav-link" href="/">Home</a>
-                    <a class="nav-link" href="/admin/priority/priority-create">Create priority</a>
-                    <a class="nav-link" href="/admin/priority/priority-delete">Delete priority</a>
+                    <a class="nav-link" href="/admin/status/status-create">Create status</a>
+                    <a class="nav-link" href="/admin/status/status-delete">Delete status</a>
                 </div>
             </div>
         </div>
@@ -25,15 +25,15 @@
 </div>
 <hr>
 <div align="center">
-    <div th:if="${#lists.isEmpty(priorities)}">
-        List of categories is empty
+    <div th:if="${#lists.isEmpty(statuses)}">
+        List of statuses is empty
     </div>
     <hr>
-    <p>List of categories:</p>
+    <p>List of statuses:</p>
     <div>
-        <tr th:each="priority: ${priorities}">
-            <td th:text="${priority.id} + '  '"/>
-            <td th:text="${priority.name}"/>
+        <tr th:each="status: ${statuses}">
+            <td th:text="${status.id} + '  '"/>
+            <td th:text="${status.name}"/>
             <br><br>
         </tr>
     </div>

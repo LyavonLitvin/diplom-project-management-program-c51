@@ -1,7 +1,9 @@
 package com.example.diplomprojectmanagementprogramc51.service;
 
 
+import com.example.diplomprojectmanagementprogramc51.dto.StatusDTO;
 import com.example.diplomprojectmanagementprogramc51.entity.Status;
+import com.example.diplomprojectmanagementprogramc51.mapper.StatusMapper;
 import com.example.diplomprojectmanagementprogramc51.repository.StatusRepository;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -16,13 +18,16 @@ import java.util.Optional;
 public class StatusService {
     @Autowired
     private StatusRepository statusRepository;
+    @Autowired
+    StatusMapper statusMapper;
 
 
     public StatusService(StatusRepository statusRepository) {
         this.statusRepository = statusRepository;
     }
 
-    public boolean save(Status status){
+    public boolean save(StatusDTO statusDTO){
+        Status status = statusMapper.statusDTOToStatus(statusDTO);
         if(existsByName(status)){
             return false;
         }
@@ -32,13 +37,14 @@ public class StatusService {
         }
     }
 
-    public boolean delete(Status status){
+    public boolean delete(StatusDTO statusDTO){
+        Status status = statusMapper.statusDTOToStatus(statusDTO);
         if(existsByName(status)){
-            return false;
-        }
-        else {
             statusRepository.delete(status);
             return true;
+        }
+        else {
+            return false;
         }
     }
 

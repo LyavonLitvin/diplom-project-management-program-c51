@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+<head>
+    <meta charset="UTF-8">
+    <title>Status delete</title>
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet"
+          integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+
+</head>
+<body>
+<div>
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+        <div class="container-fluid">
+            <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+                <div class="navbar-nav">
+                    <a class="nav-link" href="#">PMP</a>
+                    <a class="nav-link" href="/">Home</a>
+                    <a class="nav-link" href="/admin/status/status-management">Status management</a>
+                </div>
+            </div>
+        </div>
+    </nav>
+</div>
+<div align="center">
+    <form th:action="@{/admin/status/status-delete}" th:object="${status}" method="post">
+        <label th:for="name">Status name:</label>
+        <input type="name" id="name" th:field="*{name}"/>
+        <p th:if="${#fields.hasErrors('name')}" th:errors="*{name}">Incorrect name</p>
+<!--        <p th:if="${#fields.hasNotErrors('name')}" th:errors="*{name}">Delete successful</p>-->
+        <br><br>
+        <input type="submit">
+    </form>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p"
+        crossorigin="anonymous"></script>
+</body>
+</html>

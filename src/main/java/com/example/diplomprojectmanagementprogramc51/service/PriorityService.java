@@ -26,7 +26,6 @@ public class PriorityService {
 
 
     public boolean save(PriorityDTO priorityDTO){
-
         Priority priority = priorityMapper.priorityDTOToPriority(priorityDTO);
         if(existsByName(priority)){
             return false;
@@ -38,7 +37,6 @@ public class PriorityService {
     }
 
     public boolean delete(PriorityDTO priorityDTO){
-
         Priority priority = priorityMapper.priorityDTOToPriority(priorityDTO);
         if(existsByName(priority)){
             return false;
