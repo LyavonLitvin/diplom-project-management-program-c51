@@ -16,10 +16,8 @@
                 <a class="nav-link" href="#">PMP</a>
                 <a class="nav-link" href="/">Home</a>
                 <a sec:authorize="hasAuthority('ADMIN')" class="nav-link" href="/admin">Admin</a>
-                <a sec:authorize="hasAuthority('USER')" class="nav-link" href="/projects">All Projects</a>
-                <a sec:authorize="hasAuthority('USER')" class="nav-link" href="/my-projects">My Projects</a>
-                <a sec:authorize="hasAuthority('USER')" class="nav-link" href="/tasks">ALL Tasks</a>
-                <a sec:authorize="hasAuthority('GUEST')" class="nav-link" href="/my-tasks">My Tasks</a>
+                <a sec:authorize="hasAuthority('ADMIN')" class="nav-link" href="/projects">Tasks</a>
+                <a sec:authorize="hasAuthority('USER')" class="nav-link" href="/tasks">My Tasks</a>
                 <a sec:authorize="isAuthenticated() == false" class="nav-link" href="/user/reg">Register</a>
                 <a sec:authorize="isAuthenticated() == false" class="nav-link" href="/user/login">Log in</a>
                 <a sec:authorize="isAuthenticated()" class="nav-link" href="/user/logout">Log out</a>

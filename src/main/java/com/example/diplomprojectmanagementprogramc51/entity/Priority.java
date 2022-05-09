@@ -1,6 +1,7 @@
 package com.example.diplomprojectmanagementprogramc51.entity;
 
 //import com.example.diplomprojectmanagementprogramc51.hibernatelistener.GeneralCreateUpdateListener;
+import com.example.diplomprojectmanagementprogramc51.hibernatelistener.GeneralCreateUpdateListener;
 import lombok.*;
 import lombok.experimental.SuperBuilder;
 
@@ -9,17 +10,16 @@ import java.util.HashSet;
 import java.util.Set;
 
 @Entity
-//@EntityListeners(GeneralCreateUpdateListener.class)
+@EntityListeners(GeneralCreateUpdateListener.class)
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
-//@SuperBuilder
-@Builder
+@SuperBuilder
 @Table(name = "priorities")
-@EqualsAndHashCode(onlyExplicitlyIncluded = true)
+@EqualsAndHashCode(callSuper = false)
 public class Priority extends BasicEntity{
 
-    @EqualsAndHashCode.Include
+
     @Column(unique = true, length = 45, nullable = false)
     private String name;
     @OneToMany(cascade = {CascadeType.MERGE})

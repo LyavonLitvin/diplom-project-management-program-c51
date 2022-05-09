@@ -1,6 +1,8 @@
 package com.example.diplomprojectmanagementprogramc51.service;
 
+import com.example.diplomprojectmanagementprogramc51.dto.PriorityDTO;
 import com.example.diplomprojectmanagementprogramc51.entity.Priority;
+import com.example.diplomprojectmanagementprogramc51.mapper.PriorityMapper;
 import com.example.diplomprojectmanagementprogramc51.repository.PriorityRepository;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -15,13 +17,17 @@ import java.util.Optional;
 public class PriorityService {
     @Autowired
     private PriorityRepository priorityRepository;
+    @Autowired
+    private PriorityMapper priorityMapper;
 
     public PriorityService(PriorityRepository priorityRepository) {
         this.priorityRepository = priorityRepository;
     }
 
 
-    public boolean save(Priority priority){
+    public boolean save(PriorityDTO priorityDTO){
+
+        Priority priority = priorityMapper.priorityDTOToPriority(priorityDTO);
         if(existsByName(priority)){
             return false;
         }
@@ -31,7 +37,9 @@ public class PriorityService {
         }
     }
 
-    public boolean delete(Priority priority){
+    public boolean delete(PriorityDTO priorityDTO){
+
+        Priority priority = priorityMapper.priorityDTOToPriority(priorityDTO);
         if(existsByName(priority)){
             return false;
         }
@@ -41,7 +49,9 @@ public class PriorityService {
         }
     }
 
-    public boolean update(Priority priority){
+    public boolean update(PriorityDTO priorityDTO){
+
+        Priority priority = priorityMapper.priorityDTOToPriority(priorityDTO);
         Priority priorityCheck = priorityRepository.saveAndFlush(priority);
         return  priority.equals(priorityCheck);
     }

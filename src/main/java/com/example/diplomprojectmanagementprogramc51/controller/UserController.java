@@ -30,16 +30,13 @@ public class UserController {
 	public static final String ATTRIBUTE_DEPARTMENTS = "departments";
 
 	private final UserService userService;
-	@Autowired
-	private DepartmentService departmentService;
 
 	public UserController(UserService userService) {
 		this.userService = userService;
 	}
 
 	@GetMapping("/reg")
-	public String getRegistrationTemplate(@ModelAttribute(ATTRIBUTE_USER) RegisteringUserDTO registeringUserDTO, Model model) {
-		model.addAttribute(ATTRIBUTE_DEPARTMENTS, departmentService.findAll());
+	public String getRegistrationTemplate(@ModelAttribute(ATTRIBUTE_USER) RegisteringUserDTO registeringUserDTO) {
 		return PATH_REG_TEMPLATE;
 	}
 

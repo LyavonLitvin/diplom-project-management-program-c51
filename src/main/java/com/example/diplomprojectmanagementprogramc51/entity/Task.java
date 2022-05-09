@@ -1,7 +1,9 @@
 package com.example.diplomprojectmanagementprogramc51.entity;
 
 //import com.example.diplomprojectmanagementprogramc51.hibernatelistener.GeneralCreateUpdateListener;
+import com.example.diplomprojectmanagementprogramc51.hibernatelistener.GeneralCreateUpdateListener;
 import lombok.*;
+import lombok.experimental.SuperBuilder;
 import org.springframework.format.annotation.DateTimeFormat;
 
 import javax.persistence.*;
@@ -11,14 +13,13 @@ import java.util.HashSet;
 import java.util.Set;
 
 @Entity
-//@EntityListeners(GeneralCreateUpdateListener.class)
+@EntityListeners(GeneralCreateUpdateListener.class)
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
-//@SuperBuilder
-@Builder
+@SuperBuilder
 @Table(name = "tasks")
-@EqualsAndHashCode(onlyExplicitlyIncluded = true)
+@EqualsAndHashCode(callSuper = false)
 public class Task extends BasicEntity{
 
     @ManyToOne(targetEntity = User.class)
@@ -32,9 +33,6 @@ public class Task extends BasicEntity{
     @ManyToOne(targetEntity = Category.class)
     @JoinColumn(name = "category_id", nullable = false)
     private Category category;
-    @ManyToOne(targetEntity = Department.class)
-    @JoinColumn(name = "department_id", nullable = false)
-    private Department department;
     @ManyToOne(targetEntity = Status.class)
     @JoinColumn(name = "status_id", nullable = false)
     private Status status;
@@ -48,17 +46,5 @@ public class Task extends BasicEntity{
     @ManyToOne(targetEntity = Priority.class)
     @JoinColumn(name = "priority_id", nullable = false)
     private Priority priority;
-
-    @DateTimeFormat(pattern = "hh")
-    private LocalTime time;
-    @Column(name = "time_left")
-    @DateTimeFormat(pattern = "hh")
-    private LocalTime timeLeft;
-    @Column(name = "start_date")
-    @DateTimeFormat(pattern = "yyyy-MM-dd")
-    private LocalDate startDate;
-
-    @OneToMany(cascade = {CascadeType.MERGE})
-    private Set<WorkTime> workTimes = new HashSet<>();
 
 }

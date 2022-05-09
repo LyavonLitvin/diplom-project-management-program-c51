@@ -17,10 +17,8 @@
                 <a class="nav-link" href="#">PMP</a>
                 <a class="nav-link" href="/">Home</a>
                 <a sec:authorize="hasAuthority('ADMIN')" class="nav-link" href="/admin">Admin</a>
-                <a sec:authorize="hasAuthority('USER')" class="nav-link" href="/projects">All Projects</a>
-                <a sec:authorize="hasAuthority('USER')" class="nav-link" href="/my-projects">My Projects</a>
-                <a sec:authorize="hasAuthority('USER')" class="nav-link" href="/tasks">ALL Tasks</a>
-                <a sec:authorize="hasAuthority('GUEST')" class="nav-link" href="/my-tasks">My Tasks</a>
+                <a sec:authorize="hasAuthority('ADMIN')" class="nav-link" href="/projects">Tasks</a>
+                <a sec:authorize="hasAuthority('USER')" class="nav-link" href="/tasks">My Tasks</a>
                 <a sec:authorize="isAuthenticated() == false" class="nav-link" href="/user/reg">Register</a>
                 <a sec:authorize="isAuthenticated() == false" class="nav-link" href="/user/login">Log in</a>
                 <a sec:authorize="isAuthenticated()" class="nav-link" href="/user/logout">Log out</a>
@@ -57,15 +55,6 @@
         <label th:for="password">Password:</label>
         <input type="password" id="password" th:field="*{password}" required/>
         <p th:if="${#fields.hasErrors('password')}" th:errors="*{password}">Incorrect password</p>
-        <br><br>
-
-        <label th:for="department">Department:</label>
-<!--        <div th:each="department : ${departments}">-->
-<!--            <label th:text="${department.name}"></label>-->
-<!--            <input type="checkbox" th:field="*{departments}" th:value="${department.name}">-->
-<!--        </div>-->
-        <input type="department" id="department" th:field="*{department}" required/>
-        <p th:if="${#fields.hasErrors('department')}" th:errors="*{department}">Incorrect department</p>
         <br><br>
 
         <input type="submit"/>
