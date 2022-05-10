@@ -12,14 +12,7 @@ import javax.validation.constraints.Size;
 @Builder
 @Getter
 @Setter
-public class TaskDTO {
-
-
-    @NotBlank
-    @NotEmpty
-    @Pattern(regexp = "^[0-9]*$",
-            message = "ID must contain only numbers!")
-    private String id;
+public class CreatingTaskDTO {
 
     @NotBlank
     @NotEmpty

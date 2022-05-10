@@ -29,9 +29,9 @@ public class User extends BasicEntity implements UserDetails {
 	private String password;
 	@Column(unique = true, length = 250, nullable = false)
 	private String email;
-	@Column(length = 40)
+	@Column(length = 40, name = "first_name")
 	private String firstName;
-	@Column(length = 40)
+	@Column(length = 40, name = "last_name")
 	private String lastName;
 
 

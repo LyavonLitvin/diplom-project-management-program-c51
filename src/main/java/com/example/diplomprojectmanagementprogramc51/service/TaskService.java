@@ -1,5 +1,6 @@
 package com.example.diplomprojectmanagementprogramc51.service;
 
+import com.example.diplomprojectmanagementprogramc51.dto.CreatingTaskDTO;
 import com.example.diplomprojectmanagementprogramc51.dto.TaskDTO;
 import com.example.diplomprojectmanagementprogramc51.entity.Task;
 import com.example.diplomprojectmanagementprogramc51.mapper.TaskMapper;
@@ -25,8 +26,8 @@ public class TaskService {
 
     }
 
-    public boolean save(TaskDTO taskDTO){
-        Task task = TaskMapper.mapFromTaskDtoToTask(taskDTO);
+    public boolean save(CreatingTaskDTO creatingTaskDTO){
+        Task task = TaskMapper.mapFromCreatingTaskDtoToTask(creatingTaskDTO);
         if(existsByName(task)){
             return false;
         }
@@ -36,8 +37,8 @@ public class TaskService {
         }
     }
 
-    public boolean delete(TaskDTO taskDTO){
-        Task task = TaskMapper.mapFromTaskDtoToTask(taskDTO);
+    public boolean delete(CreatingTaskDTO creatingTaskDTO){
+        Task task = TaskMapper.mapFromCreatingTaskDtoToTask(creatingTaskDTO);
         if(existsByName(task)){
             return false;
         }
@@ -47,8 +48,8 @@ public class TaskService {
         }
     }
 
-    public boolean update(TaskDTO taskDTO){
-        Task task = TaskMapper.mapFromTaskDtoToTask(taskDTO);
+    public boolean update(CreatingTaskDTO creatingTaskDTO){
+        Task task = TaskMapper.mapFromCreatingTaskDtoToTask(creatingTaskDTO);
         Task taskCheck = taskRepository.saveAndFlush(task);
         return  task.equals(taskCheck);
     }
@@ -57,8 +58,9 @@ public class TaskService {
         return taskRepository.existsByName(task.getName());
     }
 
-    public List<Task> findAllByName(){
-        return taskRepository.findAll();
+    public List<TaskDTO> findAll(){
+        List<TaskDTO> taskDTOList = TaskMapper.mapFromTaskDTOListFromTasks(taskRepository.findAll());
+        return taskDTOList;
     }
 
     public Optional<Task> findById(long id){
@@ -67,6 +69,16 @@ public class TaskService {
 
     public Optional<Task> findByName(String name){
         return taskRepository.findByName(name);
+    }
+
+    public List<TaskDTO> findByCreatorUsername(String username){
+        List<TaskDTO> taskDTOListCreator = TaskMapper.mapFromTaskDTOListFromTasks(taskRepository.findByCreator_Username(username));
+        return taskDTOListCreator;
+    }
+
+    public List<TaskDTO> findByExecutorUsername(String username){
+        List<TaskDTO> taskDTOListExecutor = TaskMapper.mapFromTaskDTOListFromTasks(taskRepository.findByExecutor_Username(username));
+        return taskDTOListExecutor;
     }
 }
 
