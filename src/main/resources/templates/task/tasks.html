@@ -18,7 +18,7 @@
                     <a class="nav-link" href="/">Home</a>
                     <a sec:authorize="hasAuthority('ADMIN')" class="nav-link" href="#">All tasks</a>
                     <a class="nav-link" href="/task/my-tasks">My tasks</a>
-                    <a class="nav-link" href="/task/create">Create task</a>
+                    <a sec:authorize="hasAuthority('ADMIN')" class="nav-link" href="/task/create">Create task</a>
                     <a class="nav-link" href="/task/edit">Edit task</a>
                     <a sec:authorize="hasAuthority('ADMIN')" class="nav-link" href="/task/delete">Delete task</a>
                 </div>

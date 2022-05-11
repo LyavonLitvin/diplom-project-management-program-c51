@@ -1,14 +1,14 @@
 package com.example.diplomprojectmanagementprogramc51.controller;
 
 
-import com.example.diplomprojectmanagementprogramc51.dto.CategoryDTO;
+
 import com.example.diplomprojectmanagementprogramc51.dto.CreatingTaskDTO;
 import com.example.diplomprojectmanagementprogramc51.dto.TaskDTO;
-import com.example.diplomprojectmanagementprogramc51.entity.User;
+
 import com.example.diplomprojectmanagementprogramc51.mapper.TaskMapper;
 import com.example.diplomprojectmanagementprogramc51.service.*;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.security.core.context.SecurityContextHolder;
+
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
@@ -91,26 +91,6 @@ public class TaskController {
         }
     }
 
-    edit
-    @GetMapping("/task/{id}role-assignment")
-    public String getRoleAssignmentTemplate(@ModelAttribute(ATTRIBUTE_USER) User user, Model model) {
-        model.addAttribute(ATTRIBUTE_ROLES, roleService.findAll());
-        return PATH_ROLE_ASSIGNMENT_TEMPLATE;
-    }
-
-    @PostMapping("/role-management/role-assignment")
-    public String assignRoleToUser(@ModelAttribute(ATTRIBUTE_USER) User user, BindingResult bindingResult, Model model) {
-        model.addAttribute(ATTRIBUTE_ROLES, roleService.findAll());
-        Optional<User> foundUser = Optional.ofNullable(userService.findByUsername(user.getUsername()));
-        if (!bindingResult.hasErrors()) {
-            if (foundUser.isPresent()) {
-                userService.assignRolesToUser(foundUser.get(), user.getRoles());
-            } else {
-                bindingResult.addError(new ObjectError(OBJECT_ERROR_GLOBAL, ERROR_USER_WITH_EMAIL_NOT_EXIST));
-            }
-        }
-        return PATH_ROLE_ASSIGNMENT_TEMPLATE;
-    }
 
     @GetMapping("/tasks")
     public String showAllTasks(Model model, HttpSession session) {
@@ -128,7 +108,6 @@ public class TaskController {
         model.addAttribute(ATTRIBUTE_MY_TASKS_CREATOR, myTasksCreator);
         List<TaskDTO> myTasksExecutor = taskService.findByExecutorUsername(userService.getCurrentUsername());
         model.addAttribute(ATTRIBUTE_MY_TASKS_EXECUTOR, myTasksExecutor);
-
         return PATH_MY_TASKS_TEMPLATE;
     }
 
@@ -141,10 +120,23 @@ public class TaskController {
         return "task/task";
     }
 
+    @GetMapping("/update")
+    public String updateTask(@PathVariable("id") long id, Model model) {
+        Optional<TaskDTO> optionalTask = Optional.of(TaskMapper.mapFromTaskToTaskDto(taskService.findById(id).get()));
+        TaskDTO task = optionalTask.orElse(null);
+        model.addAttribute(ATTRIBUTE_TASK, task);
+
+        return "task/task";
+    }
+
     @PostMapping("/task/delete")
-    public String deleteTask(@RequestParam long taskId) {
-        taskService.deleteById(resumeId);
-        return REDIRECT_TO_MY_TASKS;
+    public String deleteTask(@RequestParam long taskId, Model model) {
+        if(taskService.delete(taskId)) {
+            model.addAttribute(ATTRIBUTE_ERROR, "Task id:" + taskId + " have already deleted!");
+            return REDIRECT_TO_MY_TASKS;
+        } else {
+            return REDIRECT_TO_MY_TASKS;
+        }
     }
 }
 

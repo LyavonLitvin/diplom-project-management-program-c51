@@ -8,9 +8,9 @@ Web application that allows manage projects in various business.
 
 ## Dependencies
 
-* Spring Web
-* Java Servlet API
+* Spring Boot
 * Spring Security
+* Java Servlet API
 * Spring ORM
 * Hibernate Core
 * MySQL Connector / H2
@@ -53,10 +53,10 @@ datasource.username=<username>
 datasource.password=<password>
 ```
 
-Change the path to the log file in log4j.properties.
+Change the path to the log file in applcation.properties.
 
 ```bash
-log4j.appender.FILE.File=<path-to-log-file>
+logging.file.name=<path-to-log-file>
 ```
 
 # Project status

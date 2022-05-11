@@ -8,7 +8,7 @@ import org.springframework.boot.test.context.SpringBootTest;
 public class CategoryRepositoryTest {
 
     @Autowired
-//    CategoryRepository categoryRepository;
+    CategoryRepository categoryRepository;
 
     @Test
     public void findByName() throws Exception{
