@@ -62,16 +62,16 @@
                     <div class="row justify-content-start mb-2">
                         <div class="col-auto">
                             <button type="button" class="btn btn-dark btn-sm" data-bs-toggle="modal"
-                                    th:data-bs-target="'#staticBackdrop' + ${resume.id}">Delete
+                                    th:data-bs-target="'#staticBackdrop' + ${task.id}">Delete
                             </button>
                         </div>
                         <div class="col-auto">
-                            <a class="btn btn-secondary btn-sm" th:href="@{/resume/edit-menu(id=${resume.id})}"
+                            <a class="btn btn-secondary btn-sm" th:href="@{/task/edit(id=${task.id})}"
                                role="button">Edit</a>
                         </div>
                     </div>
                     <hr class="mb-2">
-                    <div class="modal fade" th:id="'staticBackdrop' + ${resume.id}" data-bs-backdrop="static"
+                    <div class="modal fade" th:id="'staticBackdrop' + ${task.id}" data-bs-backdrop="static"
                          data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel"
                          aria-hidden="true">
                         <div class="modal-dialog">
@@ -86,7 +86,7 @@
                                     <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">No</button>
                                     <form th:action="@{/resume/delete}" method="post">
                                         <button type="submit" class="btn btn-primary" name="resumeId"
-                                                th:value="${resume.id}">Yes
+                                                th:value="${task.id}">Yes
                                         </button>
                                     </form>
                                 </div>
@@ -134,7 +134,7 @@
                     <td th:text="${task.priorityName} + '  '"/>
                     <div class="row justify-content-start mb-2">
                         <div class="col-auto">
-                            <a class="btn btn-secondary btn-sm" th:href="@{/resume/edit-menu(id=${resume.id})}"
+                            <a class="btn btn-secondary btn-sm" th:href="@{/task/edit(id=${task.id})}"
                                role="button">Edit</a>
                         </div>
                     </div>
