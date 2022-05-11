@@ -1,10 +1,14 @@
 package com.example.diplomprojectmanagementprogramc51.controller;
 
 
+import com.example.diplomprojectmanagementprogramc51.dto.CategoryDTO;
 import com.example.diplomprojectmanagementprogramc51.dto.CreatingTaskDTO;
 import com.example.diplomprojectmanagementprogramc51.dto.TaskDTO;
+import com.example.diplomprojectmanagementprogramc51.entity.User;
 import com.example.diplomprojectmanagementprogramc51.mapper.TaskMapper;
 import com.example.diplomprojectmanagementprogramc51.service.*;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
@@ -23,10 +27,12 @@ import static com.example.diplomprojectmanagementprogramc51.controller.Exception
 public class TaskController {
 
     public static final String ATTRIBUTE_TASK = "task";
+    public static final String ATTRIBUTE_TASK_DTO = "creatingTaskDTO";
     public static final String ATTRIBUTE_TASKS = "tasks";
     public static final String ATTRIBUTE_CATEGORIES = "categories";
     public static final String ATTRIBUTE_STATUSES = "statuses";
     public static final String ATTRIBUTE_PRIORITIES = "priorities";
+    public static final String ATTRIBUTE_USER = "user";
     public static final String ATTRIBUTE_USERS = "users";
     public static final String ATTRIBUTE_MY_TASKS_CREATOR = "myTasksCreator";
     public static final String ATTRIBUTE_MY_TASKS_EXECUTOR = "myTasksExecutor";
@@ -39,12 +45,17 @@ public class TaskController {
     public static final String REDIRECT_TO_MY_TASKS = "redirect:/task/my-tasks";
     public static final String REDIRECT_TO_EDIT_PAGE = "redirect:/task/edit";
 
+    @Autowired
+    private TaskService taskService;
+    @Autowired
+    private CategoryService categoryService;
+    @Autowired
+    private PriorityService priorityService;
+    @Autowired
+    private StatusService statusService;
+    @Autowired
+    private UserService userService;
 
-    private final TaskService taskService;
-    private final CategoryService categoryService;
-    private final PriorityService priorityService;
-    private final StatusService statusService;
-    private final UserService userService;
 
     public TaskController(TaskService tasService, CategoryService categoryService, PriorityService priorityService, StatusService statusService, UserService userService) {
         this.taskService = tasService;
@@ -56,10 +67,11 @@ public class TaskController {
 
     @GetMapping("/create")
     public String getTaskCreateTemplate(@ModelAttribute(ATTRIBUTE_TASK) CreatingTaskDTO creatingTaskDTO, Model model) {
+        model.addAttribute(ATTRIBUTE_TASK_DTO, new CreatingTaskDTO());
         model.addAttribute(ATTRIBUTE_CATEGORIES, categoryService.findAll());
         model.addAttribute(ATTRIBUTE_PRIORITIES, priorityService.findAll());
         model.addAttribute(ATTRIBUTE_STATUSES, statusService.findAll());
-        model.addAttribute(ATTRIBUTE_USERS, userService.findAll());
+        model.addAttribute(ATTRIBUTE_USERS, userService.findAllUserList());
         return PATH_TASK_CREATE_TEMPLATE;
     }
 
@@ -79,26 +91,26 @@ public class TaskController {
         }
     }
 
-//    edit
-//    @GetMapping("/task/{id}role-assignment")
-//    public String getRoleAssignmentTemplate(@ModelAttribute(ATTRIBUTE_USER) User user, Model model) {
-//        model.addAttribute(ATTRIBUTE_ROLES, roleService.findAll());
-//        return PATH_ROLE_ASSIGNMENT_TEMPLATE;
-//    }
-//
-//    @PostMapping("/role-management/role-assignment")
-//    public String assignRoleToUser(@ModelAttribute(ATTRIBUTE_USER) User user, BindingResult bindingResult, Model model) {
-//        model.addAttribute(ATTRIBUTE_ROLES, roleService.findAll());
-//        Optional<User> foundUser = Optional.ofNullable(userService.findByUsername(user.getUsername()));
-//        if (!bindingResult.hasErrors()) {
-//            if (foundUser.isPresent()) {
-//                userService.assignRolesToUser(foundUser.get(), user.getRoles());
-//            } else {
-//                bindingResult.addError(new ObjectError(OBJECT_ERROR_GLOBAL, ERROR_USER_WITH_EMAIL_NOT_EXIST));
-//            }
-//        }
-//        return PATH_ROLE_ASSIGNMENT_TEMPLATE;
-//    }
+    edit
+    @GetMapping("/task/{id}role-assignment")
+    public String getRoleAssignmentTemplate(@ModelAttribute(ATTRIBUTE_USER) User user, Model model) {
+        model.addAttribute(ATTRIBUTE_ROLES, roleService.findAll());
+        return PATH_ROLE_ASSIGNMENT_TEMPLATE;
+    }
+
+    @PostMapping("/role-management/role-assignment")
+    public String assignRoleToUser(@ModelAttribute(ATTRIBUTE_USER) User user, BindingResult bindingResult, Model model) {
+        model.addAttribute(ATTRIBUTE_ROLES, roleService.findAll());
+        Optional<User> foundUser = Optional.ofNullable(userService.findByUsername(user.getUsername()));
+        if (!bindingResult.hasErrors()) {
+            if (foundUser.isPresent()) {
+                userService.assignRolesToUser(foundUser.get(), user.getRoles());
+            } else {
+                bindingResult.addError(new ObjectError(OBJECT_ERROR_GLOBAL, ERROR_USER_WITH_EMAIL_NOT_EXIST));
+            }
+        }
+        return PATH_ROLE_ASSIGNMENT_TEMPLATE;
+    }
 
     @GetMapping("/tasks")
     public String showAllTasks(Model model, HttpSession session) {
@@ -127,6 +139,12 @@ public class TaskController {
         model.addAttribute(ATTRIBUTE_TASK, task);
 
         return "task/task";
+    }
+
+    @PostMapping("/task/delete")
+    public String deleteTask(@RequestParam long taskId) {
+        taskService.deleteById(resumeId);
+        return REDIRECT_TO_MY_TASKS;
     }
 }
 

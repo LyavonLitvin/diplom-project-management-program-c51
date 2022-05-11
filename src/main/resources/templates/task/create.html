@@ -26,29 +26,57 @@
         </div>
     </nav>
 </div>
-<div align="center">
-    <form th:action="@{/task/create}" th:object="${creatingTaskDTO}" method="post">
-        <label th:for="name">Task name:</label>
-        <input type="text" id="name" th:field="*{name}"/>
+<div class="container">
+    <form action="#" th:action="@{/task/create}" th:object="${creatingTaskDTO}" method="post">
+
+        <p th:if="${error} != null" th:text="${error}">Error</p>
+
+        <label for="name">Task name:</label>
+        <input type="text" id="name" th:field="*{name}" style="width:400px" required/>
         <p th:if="${#fields.hasErrors('name')}" th:errors="*{name}">Incorrect name</p>
         <br><br>
-        <label th:for="name">Description:</label>
-        <input type="text" id="description" th:field="*{description}"/>
+        <label for="name">Description:</label>
+        <input type="text" id="description" th:field="*{description}" style="width:800px" required/>
         <p th:if="${#fields.hasErrors('description')}" th:errors="*{description}">Incorrect description</p>
         <br><br>
-        <label th:for="name">Executor username:</label>
-        <select th:field="*{operation}" id="executorName">
-            <th:block th:each="flower : ${flowers}">
-                <li th:utext="${flower}">..</li>
-            </th:block>
-            <option value="null" selected>Select executor</option>
-            <option value="SUM">+</option>
-            <option value="SUBTRACT">-</option>
-            <option value="MULTIPLY">*</option>
-            <option value="DIVIDE">/</option>
+        <label for="name">Executor username:</label>
+        <select class="form-control" th:field="*{executorName}">
+            <option th:each="user : ${users}"
+                    th:value="${user.username}"
+                    th:text="${user.username}">please select username
+            </option>
         </select>
-        <td th:if="${#fields.hasErrors('operation')}" th:errors="*{operation}">operation error</td>
-        <input type="submit">
+        <p th:if="${#fields.hasErrors('executorName')}" th:errors="*{executorName}">Incorrect executor's username</p>
+        <br><br>
+        <label for="name">Category:</label>
+        <select class="form-control" th:field="*{categoryName}">
+            <option th:each="category : ${categories}"
+                    th:value="${category.name}"
+                    th:text="${category.name}">please select category
+            </option>
+        </select>
+        <p th:if="${#fields.hasErrors('categoryName')}" th:errors="*{categoryName}">Incorrect category's name</p>
+        <br><br>
+        <label for="name">Priority:</label>
+        <select class="form-control" th:field="*{priorityName}">
+            <option th:each="priority : ${priorities}"
+                    th:value="${priority.name}"
+                    th:text="${priority.name}">please select category
+            </option>
+        </select>
+        <p th:if="${#fields.hasErrors('priorityName')}" th:errors="*{priorityName}">Incorrect priority's name</p>
+        <br><br>
+        <label for="name">Status:</label>
+        <select class="form-control" th:field="*{statusName}">
+            <option th:each="status : ${statuses}"
+                    th:value="${status.name}"
+                    th:text="${status.name}">please select category
+            </option>
+        </select>
+        <p th:if="${#fields.hasErrors('statusName')}" th:errors="*{statusName}">Incorrect status's name</p>
+        <br><br>
+
+        <input type="submit"/>
     </form>
 </div>
 

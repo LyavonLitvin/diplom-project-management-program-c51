@@ -37,14 +37,13 @@ public class TaskService {
         }
     }
 
-    public boolean delete(CreatingTaskDTO creatingTaskDTO){
-        Task task = TaskMapper.mapFromCreatingTaskDtoToTask(creatingTaskDTO);
-        if(existsByName(task)){
-            return false;
+    public boolean delete(long id){
+        if(findById(id).isPresent()){
+            taskRepository.delete(findById(id).get());
+            return true;
         }
         else {
-            taskRepository.delete(task);
-            return true;
+            return false;
         }
     }
 

@@ -1,6 +1,8 @@
 package com.example.diplomprojectmanagementprogramc51.dto;
 
 import lombok.*;
+import org.hibernate.validator.constraints.NotBlank;
+import org.hibernate.validator.constraints.NotEmpty;
 
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Pattern;
@@ -15,9 +17,11 @@ public class UserDTO {
     private static final String MSG_NAME_EMPTY = "name empty";
     private static final String MSG_PASSWORD_EMPTY = "password empty";
 
-//    @NotNull(message = MSG_NAME_EMPTY)
-//    @Size(min = 3, max = 50)
-//    private String name; // Имя пользователя
+    @NotBlank
+    @NotEmpty
+//    @Pattern(regexp = "^[0-9]*$",
+//            message = "ID must contain only numbers!")
+    private long id;
 
     @NotNull(message = MSG_NAME_EMPTY)
     @Size(min = 3, max = 50)

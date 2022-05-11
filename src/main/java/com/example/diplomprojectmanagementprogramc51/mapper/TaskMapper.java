@@ -29,7 +29,7 @@ public class TaskMapper {
             return null;
         } else {
             return Task.builder()
-                    .creator(userService.findByUsername(creatingTaskDTO.getCreatorName()))
+                    .creator(userService.findByUsername(userService.getCurrentUsername()))
                     .executor(userService.findByUsername(creatingTaskDTO.getExecutorName()))
                     .category(categoryService.findByName(creatingTaskDTO.getCategoryName()).get())
                     .status(statusService.findByName(creatingTaskDTO.getStatusName()).get())

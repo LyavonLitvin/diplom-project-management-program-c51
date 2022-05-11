@@ -14,8 +14,8 @@ import javax.validation.constraints.Size;
 @Setter
 public class CreatingTaskDTO {
 
-    @NotBlank
-    @NotEmpty
+//    @NotBlank
+//    @NotEmpty
     @Size(min = 3, max = 20)
     @Pattern(regexp = "^[a-zA-Z_.]*$",
             message = "Creator name must contain only latin letters, underscores and dots!")
@@ -31,35 +31,35 @@ public class CreatingTaskDTO {
     @NotBlank
     @NotEmpty
     @Size(min = 3, max = 40)
-    @Pattern(regexp = "^[a-zA-Z_.]*$",
+    @Pattern(regexp = "^[a-zA-Z_.-]*$",
             message = "Category name must contain only latin letters, underscores and dots!")
     private String categoryName;
 
     @NotBlank
     @NotEmpty
     @Size(min = 3, max = 40)
-    @Pattern(regexp = "^[a-zA-Z_.]*$",
+    @Pattern(regexp = "^[a-zA-Z_.-]*$",
             message = "Status name must contain only latin letters, underscores and dots!")
     private String statusName;
 
     @NotBlank
     @NotEmpty
     @Size(min = 3, max = 40)
-    @Pattern(regexp = "^[a-zA-Z_.]*$",
+    @Pattern(regexp = "^[a-zA-Z_.-]*$",
             message = "Category name must contain only latin letters, underscores and dots!")
     private String name;
 
     @NotBlank
     @NotEmpty
     @Size(min = 3, max = 250)
-    @Pattern(regexp = "^[a-zA-Z_.]*$",
+    @Pattern(regexp = "^[a-zA-Z_.-]*$",
             message = "Description name must contain only latin letters, underscores and dots!")
     private String Description;
 
     @NotBlank
     @NotEmpty
     @Size(min = 3, max = 45)
-    @Pattern(regexp = "^[a-zA-Z_.]*$",
+    @Pattern(regexp = "^[a-zA-Z_.-]*$",
             message = "Priority name must contain only latin letters, underscores and dots!")
     private String priorityName;
 }

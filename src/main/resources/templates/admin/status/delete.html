@@ -27,7 +27,6 @@
         <label th:for="name">Status name:</label>
         <input type="name" id="name" th:field="*{name}"/>
         <p th:if="${#fields.hasErrors('name')}" th:errors="*{name}">Incorrect name</p>
-<!--        <p th:if="${#fields.hasNotErrors('name')}" th:errors="*{name}">Delete successful</p>-->
         <br><br>
         <input type="submit">
     </form>

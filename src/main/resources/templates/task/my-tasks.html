@@ -26,16 +26,16 @@
         </div>
     </nav>
 </div>
-<hr>
+
 
 <div sec:authorize="hasAuthority('ADMIN')">
     <div align="center">
-        <hr>
-        <div th:if="${#lists.isEmpty(tasks)}">
+
+        <div th:if="${#lists.isEmpty(myTasksCreator)}">
             List of tasks is empty
         </div>
-        <hr>
-        <p>List of tasks:</p>
+
+        <p>Creator List of tasks:</p>
         <div>
             <table class="table">
                 <thead class="table-light">
@@ -50,7 +50,7 @@
                 </tr>
                 </thead>
                 <tbody>
-                <tr th:each="task: ${tasks}">
+                <tr th:each="task: ${myTasksCreator}">
                     <td th:text="${task.id} + '  '"/>
                     <td th:text="${task.creatorName} + '  '"/>
                     <td th:text="${task.executorName} + '  '"/>
@@ -58,15 +58,94 @@
                     <td th:text="${task.statusName} + '  '"/>
                     <td th:text="${task.name} + '  '"/>
                     <td th:text="${task.priorityName} + '  '"/>
+
+                    <div class="row justify-content-start mb-2">
+                        <div class="col-auto">
+                            <button type="button" class="btn btn-dark btn-sm" data-bs-toggle="modal"
+                                    th:data-bs-target="'#staticBackdrop' + ${resume.id}">Delete
+                            </button>
+                        </div>
+                        <div class="col-auto">
+                            <a class="btn btn-secondary btn-sm" th:href="@{/resume/edit-menu(id=${resume.id})}"
+                               role="button">Edit</a>
+                        </div>
+                    </div>
+                    <hr class="mb-2">
+                    <div class="modal fade" th:id="'staticBackdrop' + ${resume.id}" data-bs-backdrop="static"
+                         data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel"
+                         aria-hidden="true">
+                        <div class="modal-dialog">
+                            <div class="modal-content">
+                                <div class="modal-header">
+                                    <h5 class="modal-title" id="staticBackdropLabel">Are you sure you want to delete
+                                        this resume?</h5>
+                                    <button type="button" class="btn-close" data-bs-dismiss="modal"
+                                            aria-label="Close"></button>
+                                </div>
+                                <div class="modal-footer">
+                                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">No</button>
+                                    <form th:action="@{/resume/delete}" method="post">
+                                        <button type="submit" class="btn btn-primary" name="resumeId"
+                                                th:value="${resume.id}">Yes
+                                        </button>
+                                    </form>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
                 </tr>
                 </tbody>
             </table>
         </div>
-        <hr>
+
 
     </div>
 </div>
 
+<div sec:authorize="hasAuthority('USER')">
+    <div align="center">
+
+        <div th:if="${#lists.isEmpty(myTasksExecutor)}">
+            List of tasks is empty
+        </div>
+
+        <p>Executor List of tasks:</p>
+        <div>
+            <table class="table">
+                <thead class="table-light">
+                <tr>
+                    <th scope="col">ID</th>
+                    <th scope="col">Creator username</th>
+                    <th scope="col">Executor username</th>
+                    <th scope="col">Category</th>
+                    <th scope="col">Status</th>
+                    <th scope="col">Name</th>
+                    <th scope="col">Priority</th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr th:each="task: ${myTasksExecutor}">
+                    <td th:text="${task.id} + '  '"/>
+                    <td th:text="${task.creatorName} + '  '"/>
+                    <td th:text="${task.executorName} + '  '"/>
+                    <td th:text="${task.categoryName} + '  '"/>
+                    <td th:text="${task.statusName} + '  '"/>
+                    <td th:text="${task.name} + '  '"/>
+                    <td th:text="${task.priorityName} + '  '"/>
+                    <div class="row justify-content-start mb-2">
+                        <div class="col-auto">
+                            <a class="btn btn-secondary btn-sm" th:href="@{/resume/edit-menu(id=${resume.id})}"
+                               role="button">Edit</a>
+                        </div>
+                    </div>
+                </tr>
+                </tbody>
+            </table>
+        </div>
+
+
+    </div>
+</div>
 
 
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"

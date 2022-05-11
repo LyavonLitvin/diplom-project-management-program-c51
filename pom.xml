@@ -15,6 +15,8 @@
     <description>diplom-project-management-program-c51</description>
     <properties>
         <java.version>11</java.version>
+        <spring.version>5.3.19</spring.version>
+        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <maven.compiler.source>1.8</maven.compiler.source>
         <maven.compiler.target>1.8</maven.compiler.target>
         <spring-security.version>5.6.3</spring-security.version>
@@ -72,11 +74,6 @@
             <artifactId>mapstruct-processor</artifactId>
             <version>1.4.2.Final</version>
         </dependency>
-<!--        <dependency>-->
-<!--            <groupId>io.springfox</groupId>-->
-<!--            <artifactId>springfox-boot-starter</artifactId>-->
-<!--            <version>3.0.0</version>-->
-<!--        </dependency>-->
         <dependency>
             <groupId>org.slf4j</groupId>
             <artifactId>slf4j-api</artifactId>
