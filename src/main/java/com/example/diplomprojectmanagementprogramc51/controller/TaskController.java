@@ -122,8 +122,8 @@ public class TaskController {
 
     @GetMapping("/{id}")
     public String showById(@PathVariable("id") long id, Model model) {
-        Optional<CreatingTaskDTO> optionalTask = Optional.of(TaskMapper.mapFromTaskToCreatingTaskDto(taskService.findById(id).get()));
-        CreatingTaskDTO task = optionalTask.orElse(null);
+        Optional<TaskDTO> optionalTask = Optional.of(TaskMapper.mapFromTaskToTaskDto(taskService.findById(id).get()));
+        TaskDTO task = optionalTask.orElse(null);
         model.addAttribute(ATTRIBUTE_TASK, task);
 
         return "task/task";

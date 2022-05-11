@@ -9,10 +9,26 @@
 
 </head>
 <body>
+<div>
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+        <div class="container-fluid">
+            <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+                <div class="navbar-nav">
+                    <a class="nav-link" href="#">PMP</a>
+                    <a class="nav-link" href="/">Home</a>
+                    <a sec:authorize="hasAuthority('ADMIN')" class="nav-link" href="/task/tasks">All tasks</a>
+                    <a class="nav-link" href="/task/my-tasks">My tasks</a>
+                    <a class="nav-link" href="/task/create">Create task</a>
+                    <a class="nav-link" href="/task/edit">Edit task</a>
+                    <a sec:authorize="hasAuthority('ADMIN')" class="nav-link" href="/task/delete">Delete task</a>
+                </div>
+            </div>
+        </div>
+    </nav>
+</div>
 
 
-
-<form th:method="PATCH" action="@{/user/{id}{id=${user.getId()}}}" th:object="${user}">
+<form th:method="PATCH" action="@{/task/{id}{id=${task.getId()}}}" th:object="${task}">
     <div>
         <label for="name">Name</label>
         <input type="text" th:field="*{name}" id="name"/>

@@ -16,18 +16,38 @@
                 <div class="navbar-nav">
                     <a class="nav-link" href="#">PMP</a>
                     <a class="nav-link" href="/">Home</a>
-                    <a class="nav-link" href="/admin/status/status-management">Status management</a>
+                    <a sec:authorize="hasAuthority('ADMIN')" class="nav-link" href="/task/tasks">All tasks</a>
+                    <a class="nav-link" href="/task/my-tasks">My tasks</a>
+                    <a class="nav-link" href="/task/create">Create task</a>
+                    <a class="nav-link" href="/task/edit">Edit task</a>
+                    <a sec:authorize="hasAuthority('ADMIN')" class="nav-link" href="/task/delete">Delete task</a>
                 </div>
             </div>
         </div>
     </nav>
 </div>
 <div align="center">
-    <form th:action="@{/admin/status/status-create}" th:object="${status}" method="post">
-        <label th:for="name">Status name:</label>
+    <form th:action="@{/task/create}" th:object="${creatingTaskDTO}" method="post">
+        <label th:for="name">Task name:</label>
         <input type="text" id="name" th:field="*{name}"/>
         <p th:if="${#fields.hasErrors('name')}" th:errors="*{name}">Incorrect name</p>
         <br><br>
+        <label th:for="name">Description:</label>
+        <input type="text" id="description" th:field="*{description}"/>
+        <p th:if="${#fields.hasErrors('description')}" th:errors="*{description}">Incorrect description</p>
+        <br><br>
+        <label th:for="name">Executor username:</label>
+        <select th:field="*{operation}" id="executorName">
+            <th:block th:each="flower : ${flowers}">
+                <li th:utext="${flower}">..</li>
+            </th:block>
+            <option value="null" selected>Select executor</option>
+            <option value="SUM">+</option>
+            <option value="SUBTRACT">-</option>
+            <option value="MULTIPLY">*</option>
+            <option value="DIVIDE">/</option>
+        </select>
+        <td th:if="${#fields.hasErrors('operation')}" th:errors="*{operation}">operation error</td>
         <input type="submit">
     </form>
 </div>

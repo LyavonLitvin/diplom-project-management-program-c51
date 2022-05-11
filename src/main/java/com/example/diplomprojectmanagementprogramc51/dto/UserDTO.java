@@ -1,16 +1,16 @@
 package com.example.diplomprojectmanagementprogramc51.dto;
 
-import lombok.AllArgsConstructor;
-import lombok.Data;
-import lombok.NoArgsConstructor;
+import lombok.*;
 
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Pattern;
 import javax.validation.constraints.Size;
 
-@Data
-@AllArgsConstructor
 @NoArgsConstructor
+@AllArgsConstructor
+@Builder
+@Getter
+@Setter
 public class UserDTO {
     private static final String MSG_NAME_EMPTY = "name empty";
     private static final String MSG_PASSWORD_EMPTY = "password empty";
@@ -23,8 +23,8 @@ public class UserDTO {
     @Size(min = 3, max = 50)
     private String username; // Логин пользователя
 
-    @NotNull(message = MSG_PASSWORD_EMPTY)
-    private String password;
+//    @NotNull(message = MSG_PASSWORD_EMPTY)
+//    private String password;
 
 //    private String firstName;
 //    private String lastName;

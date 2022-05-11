@@ -1,9 +1,12 @@
 package com.example.diplomprojectmanagementprogramc51.service;
 
 import com.example.diplomprojectmanagementprogramc51.dto.RegisteringUserDTO;
+import com.example.diplomprojectmanagementprogramc51.dto.TaskDTO;
+import com.example.diplomprojectmanagementprogramc51.dto.UserDTO;
 import com.example.diplomprojectmanagementprogramc51.entity.Role;
 import com.example.diplomprojectmanagementprogramc51.entity.User;
 import com.example.diplomprojectmanagementprogramc51.enums.RoleName;
+import com.example.diplomprojectmanagementprogramc51.mapper.TaskMapper;
 import com.example.diplomprojectmanagementprogramc51.mapper.UserMapper;
 import com.example.diplomprojectmanagementprogramc51.repository.RoleRepository;
 import com.example.diplomprojectmanagementprogramc51.repository.UserRepository;
@@ -63,7 +66,7 @@ public class UserService implements UserDetailsService {
         return SecurityContextHolder.getContext().getAuthentication().getName();
     }
 
-    public User findByUsername(String username) throws UsernameNotFoundException{
+    public User findByUsername(String username) throws UsernameNotFoundException {
         Optional<User> user = userRepository.findByUsername(username);
         if (user.isPresent()) {
             return user.get();
@@ -92,12 +95,17 @@ public class UserService implements UserDetailsService {
         return userRepository.findByUsername(auth.getName()).get();
     }
 
-    public Optional<User> findById(long id){
+    public Optional<User> findById(long id) {
         return userRepository.findById(id);
     }
 
-    public List<User> findAll(){
+    public List<User> findAll() {
         return userRepository.findAll();
+    }
+
+    public List<UserDTO> findAllUserList() {
+        List<UserDTO> userDTOList = UserMapper.mapFromUserDTOListFromUsers(userRepository.findAll());
+        return userDTOList;
     }
 
     public void assignRolesToUser(User user, Set<Role> roles) {

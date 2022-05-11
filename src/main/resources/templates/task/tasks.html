@@ -30,22 +30,36 @@
 <div sec:authorize="hasAuthority('ADMIN')">
     <div align="center">
         <hr>
-        <div th:if="${#lists.isEmpty(statuses)}">
+        <div th:if="${#lists.isEmpty(tasks)}">
             List of tasks is empty
         </div>
         <hr>
         <p>List of tasks:</p>
         <div>
-            <tr th:each="task: ${tasks}">
-                <td th:text="${task.id} + '  '"/>
-                <td th:text="${task.creatorName} + '  '"/>
-                <td th:text="${task.executorName} + '  '"/>
-                <td th:text="${task.categoryName} + '  '"/>
-                <td th:text="${task.statusName} + '  '"/>
-                <td th:text="${task.name} + '  '"/>
-                <td th:text="${task.priorityName} + '  '"/>
-                <br><br>
-            </tr>
+            <table class="table">
+                <thead class="table-light">
+                <tr>
+                    <th scope="col">ID</th>
+                    <th scope="col">Creator username</th>
+                    <th scope="col">Executor username</th>
+                    <th scope="col">Category</th>
+                    <th scope="col">Status</th>
+                    <th scope="col">Name</th>
+                    <th scope="col">Priority</th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr th:each="task: ${tasks}">
+                    <td th:text="${task.id} + '  '"/>
+                    <td th:text="${task.creatorName} + '  '"/>
+                    <td th:text="${task.executorName} + '  '"/>
+                    <td th:text="${task.categoryName} + '  '"/>
+                    <td th:text="${task.statusName} + '  '"/>
+                    <td th:text="${task.name} + '  '"/>
+                    <td th:text="${task.priorityName} + '  '"/>
+                </tr>
+                </tbody>
+            </table>
         </div>
         <hr>
 

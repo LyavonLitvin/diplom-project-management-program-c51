@@ -16,30 +16,55 @@
                 <div class="navbar-nav">
                     <a class="nav-link" href="#">PMP</a>
                     <a class="nav-link" href="/">Home</a>
-                    <a class="nav-link" href="/admin/status/status-create">Create status</a>
-                    <a class="nav-link" href="/admin/status/status-create">Create status</a>
-                    <a class="nav-link" href="/admin/status/status-delete">Delete status</a>
+                    <a sec:authorize="hasAuthority('ADMIN')" class="nav-link" href="/task/tasks">All tasks</a>
+                    <a class="nav-link" href="/task/my-tasks">My tasks</a>
+                    <a class="nav-link" href="/task/create">Create task</a>
+                    <a class="nav-link" href="/task/edit">Edit task</a>
+                    <a sec:authorize="hasAuthority('ADMIN')" class="nav-link" href="/task/delete">Delete task</a>
                 </div>
             </div>
         </div>
     </nav>
 </div>
 <hr>
-<div align="center">
-    <div th:if="${#lists.isEmpty(statuses)}">
-        List of statuses is empty
-    </div>
-    <hr>
-    <p>List of statuses:</p>
-    <div>
-        <tr th:each="status: ${statuses}">
-            <td th:text="${status.id} + '  '"/>
-            <td th:text="${status.name}"/>
-            <br><br>
-        </tr>
-    </div>
-    <hr>
 
+<div sec:authorize="hasAuthority('ADMIN')">
+    <div align="center">
+        <hr>
+        <div th:if="${#lists.isEmpty(tasks)}">
+            List of tasks is empty
+        </div>
+        <hr>
+        <p>List of tasks:</p>
+        <div>
+            <table class="table">
+                <thead class="table-light">
+                <tr>
+                    <th scope="col">ID</th>
+                    <th scope="col">Creator username</th>
+                    <th scope="col">Executor username</th>
+                    <th scope="col">Category</th>
+                    <th scope="col">Status</th>
+                    <th scope="col">Name</th>
+                    <th scope="col">Priority</th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr th:each="task: ${tasks}">
+                    <td th:text="${task.id} + '  '"/>
+                    <td th:text="${task.creatorName} + '  '"/>
+                    <td th:text="${task.executorName} + '  '"/>
+                    <td th:text="${task.categoryName} + '  '"/>
+                    <td th:text="${task.statusName} + '  '"/>
+                    <td th:text="${task.name} + '  '"/>
+                    <td th:text="${task.priorityName} + '  '"/>
+                </tr>
+                </tbody>
+            </table>
+        </div>
+        <hr>
+
+    </div>
 </div>
 
 
