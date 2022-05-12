@@ -47,8 +47,8 @@ public class TaskService {
         }
     }
 
-    public boolean update(CreatingTaskDTO creatingTaskDTO){
-        Task task = TaskMapper.mapFromCreatingTaskDtoToTask(creatingTaskDTO);
+    public boolean update(TaskDTO taskDTO){
+        Task task = TaskMapper.mapFromTaskDtoToTask(taskDTO);
         Task taskCheck = taskRepository.saveAndFlush(task);
         return  task.equals(taskCheck);
     }

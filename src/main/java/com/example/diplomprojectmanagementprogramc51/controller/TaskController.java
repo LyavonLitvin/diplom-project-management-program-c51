@@ -44,6 +44,7 @@ public class TaskController {
     public static final String REDIRECT_TO_CREATE_PAGE = "redirect:/task/create";
     public static final String REDIRECT_TO_MY_TASKS = "redirect:/task/my-tasks";
     public static final String REDIRECT_TO_EDIT_PAGE = "redirect:/task/edit";
+    public static final String ATTRIBUTE_SUCCESSFUL_UPDATE = "successfulUpdate";
 
     @Autowired
     private TaskService taskService;
@@ -121,12 +122,28 @@ public class TaskController {
     }
 
     @GetMapping("/update")
-    public String updateTask(@PathVariable("id") long id, Model model) {
+    public String updateTask(Model model, @RequestParam long id) {
         Optional<TaskDTO> optionalTask = Optional.of(TaskMapper.mapFromTaskToTaskDto(taskService.findById(id).get()));
         TaskDTO task = optionalTask.orElse(null);
         model.addAttribute(ATTRIBUTE_TASK, task);
 
-        return "task/task";
+        return PATH_TASK_EDIT_TEMPLATE;
+    }
+
+    @PostMapping("/edit/general-information")
+    public String editGeneralInformation(@ModelAttribute(ATTRIBUTE_TASK) @Valid TaskDTO taskDTO,
+                                         BindingResult bindingResult, Model model) {
+        if (bindingResult.hasErrors()) {
+            return PATH_TASK_EDIT_TEMPLATE;
+        } else {
+            if (taskService.update(taskDTO)) {
+                model.addAttribute(ATTRIBUTE_SUCCESSFUL_UPDATE, "General information updated!");
+                return PATH_TASK_EDIT_TEMPLATE;
+            } else {
+                model.addAttribute(ATTRIBUTE_ERROR, "Failed to update!");
+                return PATH_TASK_EDIT_TEMPLATE;
+            }
+        }
     }
 
     @PostMapping("/task/delete")
